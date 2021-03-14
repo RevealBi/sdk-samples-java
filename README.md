@@ -2,7 +2,7 @@
 [![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=http%3A%2F%2Frevealpackages.eastus.cloudapp.azure.com%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](http://revealpackages.eastus.cloudapp.azure.com/#basicsearch/com.infragistics.reveal.reveal-sdk)
 #### [Website](https://revealbi.io/) 
 
-## Usage
+## Basic Usage
 
 RevealBI Java SDK requires **Java 11** or newer.
 
@@ -28,11 +28,79 @@ and the following dependency, both to your `pom.xml` file:
   <version>0.9.5</version>
 </dependency>
 ```
+## Configuration
+### Export feature required configurations
+RevealBI for Java uses some native components for exporting Dashboards to different formats: Image, PDF, PPT and Excel.
 
-### Integrating Reveal into existing applications
+We use [Playwright for Java](https://github.com/microsoft/playwright-java) for exporting images and our own native application (called ExportTool) for exporting PDF, PPT and Excel documents.
+
+The required downloads (some tools required by Playwright and the ExportTool binary) are automatically triggered the first time a Dashboard is opened, trying to get these tools ready for the first Export request, but for some platforms there are some dependencies that need to be installed in advance, and also your server environment might restrict external downloads and you might need to setup these tools manually.
+
+#### Linux dependencies
+There are dependencies to multiple native libraries in Linux and the exact list of dependencies you need to install will depend on the distribution used, version and list of packages previously installed. 
+
+Here we provide the list of libraries needed to have it working on a basic Ubuntu 18.0.4 distribution, if it keeps failing the errors in the log file should provide more information about the missing libraries:
+  
+```sh
+sudo apt-get update
+
+sudo apt-get install -y libgdiplus\
+        libatk1.0-0\
+        libatk-bridge2.0-0\
+        libxkbcommon0\
+        libxcomposite1\
+        libxdamage1\
+        libxfixes3\
+        libxrandr2\
+        libgbm1\
+        libgtk-3-0\
+        libpango-1.0-0\
+        libcairo2\
+        libgdk-pixbuf2.0-0\
+        libatspi2.0-0    
+
+sudo apt-get install -y --no-install-recommends xvfb          
+```
+In a few environments we also had to install:
+```sh
+sudo apt-get install -y --allow-unauthenticated libc6-dev
+
+sudo apt-get install -y --allow-unauthenticated libx11-dev
+```
+
+#### macOS dependencies
+For macOS, the required library is libgdiplus and the installation procedure is described [here](https://docs.microsoft.com/th-th/dotnet/core/install/macos#libgdiplus).
+
+#### Manually downloading the required tools
+##### Playwright downloads
+
+##### ExportTool downloads
+- First, download the required binaries for your platform: [Windows](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/win-x64.zip), [Linux](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/linux-x64.zip) or [macOS](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/osx-x64.zip).
+- Unzip this file to some directory in the server where your Web Application is running, make sure the user you're using to execute the server process (Tomcat for example) has access to the directory where you extracted the zip file.
+- After extracting the zip file you should get the ExportTool at this location: `<dir>/<version>/<arch>/ExportTool`, for example `<dir>/1.0.0/linux-x64/ExportTool`.
+- In Linux and macOS, please be sure the `ExportTool` binary has execution permissions:
+```sh
+chmod +x ExportTool
+```
+- Initialize Reveal setting the directory where you extracted the zip file, like in the following code snippet:
+```java
+String exportToolDir = "<dir>";
+RevealEngineInitializer.initialize(new InitializeParameter().
+  withAuthProvider(new UpmediaAuthenticationProvider()).
+  withUserContextProvider(new UpmediaUserContextProvider()).
+  withDashboardProvider(new UpmediaDashboardProvider()).
+  setExportToolContainerPath(exportToolDir)
+);
+```
+- Alternatively, you can specify the directory through the system property `reveal.exportToolContainerPath`:
+```sh
+java -Dreveal.exportToolContainerPath=<dir> -jar target/upmedia-backend-spring.war
+```
+
+## Integrating Reveal into existing applications
 Here we include some additional information about integrating Reveal into existing Spring Boot and Tomcat applications.
 
-#### Adding Reveal to an existing Tomcat application
+### Adding Reveal to an existing Tomcat application
 If you have an existing Tomcat (or any other JEE container) application and you want to add Reveal, you need to follow these steps:
 - Add a dependency to a JAX-RS implementation, there are multiple options (Jersey, Resteasy, etc.), you’ll need to follow the steps described by the provider. Here the dependencies to add for Jersey:
 ```xml
@@ -59,7 +127,7 @@ If you have an existing Tomcat (or any other JEE container) application and you 
   - The parameters passed to RevealEngineInitializer.initialize (UpmediaAuthenticationProvider, UpmediaUserContextProvider, UpmediaDashboardProvider) are the providers used to customize Reveal, you’ll need to create your own providers when integrating Reveal into your application. 
 
 
-#### Adding Reveal to an existing Spring Boot application
+### Adding Reveal to an existing Spring Boot application
 If you have an existing Spring Boot application and you want to add Reveal, you need to follow these steps:
 - Add a dependency to “spring-starter-jersey” (if not added yet):
 ```xml
@@ -83,4 +151,3 @@ you’re using, like 0.9.5):
   $.ig.RevealSdkSettings.setBaseUrl("http://localhost:8080/upmedia-backend/reveal-api/");
 ```
   - The parameters passed to RevealEngineInitializer.initialize (UpmediaAuthenticationProvider, UpmediaUserContextProvider, UpmediaDashboardProvider) are the providers used to customize Reveal, you’ll need to create your own providers when integrating Reveal into your application. 
-
