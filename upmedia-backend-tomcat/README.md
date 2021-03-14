@@ -9,7 +9,7 @@ Download the code and run the following to get the WAR file to deploy in Tomcat:
 mvn package
 ```
 
-Now you can deploy the file `target/upmedia.war` to your Tomcat server, this application has been tested using Tomcat 9.
+Now you can deploy the file `target/upmedia-backend.war` to your Tomcat server, this application has been tested using Tomcat 9.
 Assuming Tomcat is using the standard port, you can verify the server is working properly by accessing http://localhost:8080/upmedia-backend/reveal-api/DashboardFile/Sales that will return the JSON document for the Sales sample dashboard.
 
 This project provides only the backend piece, you can use it along [upmedia-react](https://github.com/RevealBi/sdk-samples-react/tree/main/upmedia-react) for the frontend.
