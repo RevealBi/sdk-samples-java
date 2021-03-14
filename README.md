@@ -71,10 +71,9 @@ sudo apt-get install -y --allow-unauthenticated libx11-dev
 #### macOS dependencies
 For macOS, the required library is libgdiplus and the installation procedure is described [here](https://docs.microsoft.com/th-th/dotnet/core/install/macos#libgdiplus).
 
-#### Manually downloading the required tools
-##### Playwright downloads
-
-##### ExportTool downloads
+#### Manual configuration of required tools
+##### ExportTool manual setup
+Please note these instructions are required only if you're having issues with the automatic download mechanism, or if you want to have everything pre-installed in advance.
 - First, download the required binaries for your platform: [Windows](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/win-x64.zip), [Linux](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/linux-x64.zip) or [macOS](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/osx-x64.zip).
 - Unzip this file to some directory in the server where your Web Application is running, make sure the user you're using to execute the server process (Tomcat for example) has access to the directory where you extracted the zip file.
 - After extracting the zip file you should get the ExportTool at this location: `<dir>/<version>/<arch>/ExportTool`, for example `<dir>/1.0.0/linux-x64/ExportTool`.
@@ -96,6 +95,9 @@ RevealEngineInitializer.initialize(new InitializeParameter().
 ```sh
 java -Dreveal.exportToolContainerPath=<dir> -jar target/upmedia-backend-spring.war
 ```
+
+##### Playwright configuration
+Playwright automatically downloads the required binaries, but if a manual configuration is required or you want to understand better how it works or how to tweak it, you can check Playwright documentation [here](https://playwright.dev/java/docs/installation).
 
 ## Integrating Reveal into existing applications
 Here we include some additional information about integrating Reveal into existing Spring Boot and Tomcat applications.
