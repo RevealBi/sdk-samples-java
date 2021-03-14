@@ -1,4 +1,6 @@
 # Sample applications using [RevealBI](https://revealbi.io) Java SDK
+[![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=http%3A%2F%2Frevealpackages.eastus.cloudapp.azure.com%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](http://revealpackages.eastus.cloudapp.azure.com/#basicsearch/com.infragistics.reveal.reveal-sdk)
+#### [Website](https://revealbi.io/) 
 
 ## Usage
 
