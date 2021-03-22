@@ -22,7 +22,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js"></script>
     <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBpcuViSxzlScwOBZy5ln5iIvRl9TYn4y0&libraries=drawing,visualization"></script>
-    <script src="Reveal/infragistics.reveal.js?v=${revealSdkVersion}"></script>
+    <script src="Reveal/infragistics.reveal.js?v=${revealSdkVersion}" charset="utf-8"></script>
 </head>
 <body>
     <script type="text/javascript">
