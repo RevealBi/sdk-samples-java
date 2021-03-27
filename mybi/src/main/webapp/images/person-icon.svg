@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="16px" height="18px" viewBox="0 0 16 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>Icon/System/Cross</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="sample-SDK-Copy" transform="translate(-1325.000000, -26.000000)" fill-rule="nonzero">
+            <g id="Group-2">
+                <g id="Stacked-Group" transform="translate(1273.000000, 15.000000)">
+                    <g id="🤗-Icons-and-Labels/01:-Regular/Icon/01:-Rest" transform="translate(40.000000, 0.000000)">
+                        <rect id="Background" x="0" y="0" width="40" height="40" rx="20"></rect>
+                        <g id="Icon/System/User" opacity="0.6" transform="translate(6.000000, 6.000000)" fill="#FFFFFF">
+                            <path d="M6.39561602,22.141294 L6.39561602,18.4653881 C6.39561602,16.4393722 8.09629933,14.7894821 10.1941985,14.7894821 L17.8058015,14.7894821 C19.9040149,14.7894821 21.604384,16.4352413 21.604384,18.4653881 L21.604384,22.141294 L6.39561602,22.141294 Z M18.0258503,9.13803847 C18.0258503,11.2876968 16.22351,13.0301742 14,13.0301742 C11.77649,13.0301742 9.97414966,11.2876968 9.97414966,9.13803847 C9.97414966,6.98838012 11.77649,5.24590275 14,5.24590275 C16.22351,5.24590275 18.0258503,6.98838012 18.0258503,9.13803847 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

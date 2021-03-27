@@ -1,0 +1,230 @@
+﻿.application {
+    background-color: #fff;
+}
+
+.sidebar {
+    background-color: #333333;
+    box-shadow: 0 0.0625rem 0.125rem 0 rgba(0,0,0,0.3);
+}
+
+.modal-overlay {
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.nav-item {
+    color: #ddd;
+}
+
+    .nav-item:hover {
+        color: #fff;
+    }
+
+.active .nav-item {
+    border-left: 0.5rem solid #FF7D2B;
+    color: #fff;
+    background-color: #4A4A4A;
+}
+
+.app-bar {
+    background-color: #fff;
+    border: 0.0625rem solid #e7eaed;
+    box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.2);
+}
+
+.app-bar-left {
+    margin-left: 0;
+}
+
+.app-bar-right .app-bar-button {
+    margin-right: 0;
+    margin: 0;
+    height: 100%;
+}
+
+.app-bar-button {
+    background-size: 1.25rem;
+    width: 2.875rem;
+    background-position: center;
+}
+
+.company-title {
+    color: #f4f4f4;
+}
+
+.content-title {
+    color: #000000;
+}
+
+.close {
+    position: absolute;
+    top: 0.8125rem;
+    left: 1rem;
+    background-image: url('images/close.svg');
+}
+
+.drawer-button {
+    background-image: url('images/menu.png');
+    background-size: 1.25rem;
+}
+
+.settings-button {
+    background-image: url('images/settings.png');
+    border-left: 1px solid #e7eaed;
+}
+
+.signout-button {
+    background-image: url(images/signout.png);
+    border-left: 1px solid #e7eaed;
+}
+
+.user-button {
+    background-image: url('images/user.svg');
+}
+
+.user-information {
+    border-left: 1px solid #e7eaed;
+    display: inline-block;
+    height: 100%;
+    vertical-align: top;
+    padding: 10px 0px 0px 30px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.user-name {
+    font-size: 0.8125rem;
+    display: block;
+}
+
+.user-title {
+    font-size: .5625rem;
+    color: #fc9725;
+}
+
+.user-image {
+    display: inline-block;
+    background-image: url(images/profile.png);
+    background-size: 1.875rem;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 2.875rem;
+    height: 100%;
+}
+
+.dashboard-tab-header-container {
+    box-shadow: 0 0.125rem 0.1875rem rgba(0,0,0,0.2);
+    padding-left: 1.25rem;
+    display: none;
+}
+
+.tab-header {
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: .75rem;
+    padding: 0.625rem 0;
+    color: #777;
+    cursor: pointer;
+    margin-right: 1.25rem;
+}
+
+.tab-header-active {
+    border-bottom: 0.125rem solid #fc9725;
+    color: #fc9725;
+}
+
+.dashboard-filter-container {
+    height: 3.125rem;
+    width: 100%;
+    background-color: #e7eaed;
+    font-size: 0.75rem;
+    padding: 1.25rem 0 0 1.25rem;
+    box-shadow: 0 0.0625rem 0.1875rem rgba(0,0,0,0.2);
+}
+
+.dashboard-period-filter {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.active-dashboard-filter {
+}
+
+.not-filterable {
+    display: none;
+}
+
+.dashboard-viewer-container {
+    height: calc(100% - 7.9375rem);
+    background-color: #ececec;
+}
+
+.filterable {
+    height: calc(100% - 11.0625rem);
+}
+
+.dashboard-content {
+    height: 100%;
+}
+
+@media screen and (max-height: 25em) {
+    .dashboard-viewer-container {
+        height: calc(100% - 3.125rem);
+    }
+
+    .filterable {
+        height: calc(100% - 6.25rem);
+    }
+}
+
+@media screen and (min-width: 48em) {
+    .brand {
+        height: 7.75rem;
+        margin: 3.375rem 3.375rem 3.1875rem;
+    }
+
+    .active-dashboard-filter {
+        display: none;
+    }
+
+    .dashboard-tab-header-container {
+        display: block;
+    }
+
+    .dashboard-viewer-container {
+        height: calc(100% - 7.0625rem);
+    }
+
+    .filterable {
+        height: calc(100% - 10.1875rem);
+    }
+}
+
+@media screen and (min-width: 75em) {
+    .sidebar {
+        display: inline-block;
+        width: 12.5rem;
+        position: initial;
+        left: initial;
+        top: initial;
+        z-index: initial;
+        transition: initial;
+    }
+
+    .close {
+        display: none;
+    }
+
+    .modal-overlay {
+        display: none;
+    }
+
+    .main-content-area {
+        width: calc(100% - 12.5rem);
+        vertical-align: top;
+    }
+
+    .app-bar-left {
+        display: none;
+    }
+}
