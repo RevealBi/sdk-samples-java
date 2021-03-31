@@ -1,7 +1,10 @@
 package io.revealbi.samples.mybi.reveal;
 
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
@@ -10,6 +13,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import com.infragistics.reveal.engine.init.RevealEngineInitializer;
+import com.infragistics.reveal.engine.init.RevealEngineInitializer.InitializeParameter;
 
 import io.revealbi.samples.mybi.dashboards.CredentialRepositoryFactory;
 import io.revealbi.samples.mybi.dashboards.DashboardRepositoryFactory;
@@ -34,8 +38,13 @@ public class WebAppListener implements ServletContextListener {
 		DataSourcesHelper.setFileName(new File(rootDir, "datasources.js").getAbsolutePath());
 		DashboardRepositoryFactory.setInstance(new FileSystemDashboardRepository(getDashboardsRootDir(rootDir)));
 		CredentialRepositoryFactory.setInstance(new FileSystemCredentialRepository(getCredentialsFilePath(rootDir)));
-		
-		RevealEngineInitializer.initialize(CredentialRepositoryFactory.getInstance(), new RevealUserContextProvider(), DashboardRepositoryFactory.getInstance(), null, null);
+
+		RevealEngineInitializer.initialize(new InitializeParameter().
+				withAuthProvider(CredentialRepositoryFactory.getInstance()).
+				withUserContextProvider(new RevealUserContextProvider()).
+				withDashboardProvider(DashboardRepositoryFactory.getInstance()).
+				withLicense(getLicenseKey(rootDir))
+		);
 		evt.getServletContext().setAttribute("revealSdkVersion", RevealEngineInitializer.getRevealSdkVersion());
 	}
 
@@ -52,5 +61,28 @@ public class WebAppListener implements ServletContextListener {
 	}
 	private static String getCredentialsFilePath(String rootDir) {
 		return new File(rootDir, "credentials.json").getAbsolutePath();
+	}
+	
+	private static String getLicenseKey(String rootDir) {
+		File file = new File(rootDir, "license.dat");
+		if (file.exists() && file.canRead()) {
+			return getFirstLineTrimmed(file);
+		} else {
+			return null;
+		}
+	}
+	
+	private static String getFirstLineTrimmed(File file) {
+		try (FileReader fileReader = new FileReader(file);
+				BufferedReader reader = new BufferedReader(fileReader)) {
+			
+			String line = reader.readLine();
+			if (line != null) {
+				return line.trim();
+			}
+		} catch (Exception exc) {
+			log.log(Level.SEVERE, "Failed to read license: " + exc.getMessage(), exc);
+		}
+		return null;
 	}
 }

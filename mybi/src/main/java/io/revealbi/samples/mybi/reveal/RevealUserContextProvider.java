@@ -1,8 +1,6 @@
 package io.revealbi.samples.mybi.reveal;
 
 
-import java.security.Principal;
-
 import javax.ws.rs.container.ContainerRequestContext;
 
 import com.infragistics.reveal.sdk.rest.RVContainerRequestAwareUserContextProvider;
