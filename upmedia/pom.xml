@@ -14,7 +14,7 @@
 		<dependency>
 			<groupId>com.infragistics.reveal.sdk</groupId>
 			<artifactId>reveal-sdk</artifactId>
-			<version>0.9.7</version>
+			<version>0.9.8-SNAPSHOT</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>

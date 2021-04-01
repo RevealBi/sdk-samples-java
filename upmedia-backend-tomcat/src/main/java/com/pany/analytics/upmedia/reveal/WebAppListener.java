@@ -5,8 +5,8 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
+import com.infragistics.reveal.engine.init.InitializeParameterBuilder;
 import com.infragistics.reveal.engine.init.RevealEngineInitializer;
-import com.infragistics.reveal.engine.init.RevealEngineInitializer.InitializeParameter;
 
 @WebListener
 public class WebAppListener implements ServletContextListener {
@@ -18,10 +18,11 @@ public class WebAppListener implements ServletContextListener {
 
 	@Override
 	public void contextInitialized(ServletContextEvent ctx) {
-		RevealEngineInitializer.initialize(new InitializeParameter().
-				withAuthProvider(new UpmediaAuthenticationProvider()).
-				withUserContextProvider(new UpmediaUserContextProvider()).
-				withDashboardProvider(new UpmediaDashboardProvider())
+		RevealEngineInitializer.initialize(new InitializeParameterBuilder().
+				setAuthProvider(new UpmediaAuthenticationProvider()).
+				setUserContextProvider(new UpmediaUserContextProvider()).
+				setDashboardProvider(new UpmediaDashboardProvider()).
+			build()
 		);
 
 		RevealEngineInitializer.registerResource(CorsFilter.class);
