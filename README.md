@@ -77,18 +77,15 @@ Please note these instructions are required only if you're having issues with th
 - First, download the required binaries for your platform: [Windows](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/win-x64.zip), [Linux](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/linux-x64.zip) or [macOS](https://download.infragistics.com/reveal/builds/sdk/java/ExportTool/1.0.0/osx-x64.zip).
 - Unzip this file to some directory in the server where your Web Application is running, make sure the user you're using to execute the server process (Tomcat for example) has access to the directory where you extracted the zip file.
 - After extracting the zip file you should get the ExportTool at this location: `<dir>/<version>/<arch>/ExportTool`, for example `<dir>/1.0.0/linux-x64/ExportTool`.
-- In Linux and macOS, please be sure the `ExportTool` binary has execution permissions:
-```sh
-chmod +x ExportTool
-```
 - Initialize Reveal setting the directory where you extracted the zip file, like in the following code snippet:
 ```java
 String exportToolDir = "<dir>";
-RevealEngineInitializer.initialize(new InitializeParameter().
-  withAuthProvider(new UpmediaAuthenticationProvider()).
-  withUserContextProvider(new UpmediaUserContextProvider()).
-  withDashboardProvider(new UpmediaDashboardProvider()).
-  setExportToolContainerPath(exportToolDir)
+RevealEngineInitializer.initialize(new InitializeParameterBuilder().
+		setAuthProvider(new UpmediaAuthenticationProvider()).
+		setUserContextProvider(new UpmediaUserContextProvider()).
+		setDashboardProvider(new UpmediaDashboardProvider()).
+		setExportToolContainerPath(exportToolDir).
+    build()
 );
 ```
 - Alternatively, you can specify the directory through the system property `reveal.exportToolContainerPath`:
