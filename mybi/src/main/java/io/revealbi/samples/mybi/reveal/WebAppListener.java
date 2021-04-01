@@ -13,7 +13,7 @@ import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
 import com.infragistics.reveal.engine.init.RevealEngineInitializer;
-import com.infragistics.reveal.engine.init.RevealEngineInitializer.InitializeParameter;
+import com.infragistics.reveal.engine.init.InitializeParameterBuilder;
 
 import io.revealbi.samples.mybi.dashboards.CredentialRepositoryFactory;
 import io.revealbi.samples.mybi.dashboards.DashboardRepositoryFactory;
@@ -39,11 +39,11 @@ public class WebAppListener implements ServletContextListener {
 		DashboardRepositoryFactory.setInstance(new FileSystemDashboardRepository(getDashboardsRootDir(rootDir)));
 		CredentialRepositoryFactory.setInstance(new FileSystemCredentialRepository(getCredentialsFilePath(rootDir)));
 
-		RevealEngineInitializer.initialize(new InitializeParameter().
-				withAuthProvider(CredentialRepositoryFactory.getInstance()).
-				withUserContextProvider(new RevealUserContextProvider()).
-				withDashboardProvider(DashboardRepositoryFactory.getInstance()).
-				withLicense(getLicenseKey(rootDir))
+		RevealEngineInitializer.initialize(new InitializeParameterBuilder().
+				setAuthProvider(CredentialRepositoryFactory.getInstance()).
+				setUserContextProvider(new RevealUserContextProvider()).
+				setDashboardProvider(DashboardRepositoryFactory.getInstance()).
+				setLicense(getLicenseKey(rootDir)).build()
 		);
 		evt.getServletContext().setAttribute("revealSdkVersion", RevealEngineInitializer.getRevealSdkVersion());
 	}
