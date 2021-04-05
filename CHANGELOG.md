@@ -2,6 +2,11 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.0] - 2021-04-05
+
+- Added server-side Data Blending for Redshift, Postgres and MS SQL Server
+- Javadoc files uploaded to Maven so IDEs like Eclipse can show the documentation when Intellisense is showing information about a given class or methods
+
 ## [0.9.7] - 2021-03-19
 
 - Fixed JS files included in the Maven distribution
