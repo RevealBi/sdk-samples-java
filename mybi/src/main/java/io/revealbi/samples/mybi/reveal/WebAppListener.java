@@ -20,6 +20,7 @@ import io.revealbi.samples.mybi.dashboards.DashboardRepositoryFactory;
 import io.revealbi.samples.mybi.dashboards.FileSystemCredentialRepository;
 import io.revealbi.samples.mybi.dashboards.FileSystemDashboardRepository;
 import io.revealbi.samples.mybi.jsp.DataSourcesHelper;
+import io.revealbi.samples.mybi.rest.CorsFilter;
 
 @WebListener
 public class WebAppListener implements ServletContextListener {
@@ -46,6 +47,8 @@ public class WebAppListener implements ServletContextListener {
 				setLicense(getLicenseKey(rootDir)).build()
 		);
 		evt.getServletContext().setAttribute("revealSdkVersion", RevealEngineInitializer.getRevealSdkVersion());
+		
+		RevealEngineInitializer.registerResource(CorsFilter.class);
 	}
 
 	private static String getRootDir(ServletContext ctx) {

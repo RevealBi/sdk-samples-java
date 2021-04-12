@@ -8,8 +8,11 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 
 import com.infragistics.controls.IOUtils;
+import com.infragistics.reveal.sdk.api.model.RVDashboardSummary;
+import com.infragistics.reveal.sdk.util.RVSerializationUtilities;
 
 public class FileSystemDashboardRepository implements IDashboardRepository {
 	private String rootDir;
@@ -56,7 +59,7 @@ public class FileSystemDashboardRepository implements IDashboardRepository {
 			if (f.isDirectory() || !f.canRead() || !f.getName().endsWith(".rdash")) {
 				continue;
 			}
-			items.add(new DashboardInfo(getDashboardName(f.getName()), null));
+			items.add(new DashboardInfo(getDashboardName(f.getName()), getDashboardSummary(f)));
 		}
 		items.sort(new Comparator<DashboardInfo>() {
 			@Override
@@ -65,6 +68,26 @@ public class FileSystemDashboardRepository implements IDashboardRepository {
 			}
 		});
 		return items.toArray(new DashboardInfo[items.size()]);
+	}
+	
+	@Override
+	public void deleteDashboard(String userId, String dashboardId) throws IOException {
+		String path = getDashboardPath(userId, dashboardId);
+		File file = new File(path);
+		if (file.exists()) {
+			file.delete();
+		}
+	}
+	
+	private static Map<String, Object> getDashboardSummary(File f) {
+		try (FileInputStream in = new FileInputStream(f)) {
+			RVDashboardSummary summary = RVSerializationUtilities.getDashboardSummary(in);
+			return summary.toJson();				
+		} catch (IOException e) {
+			System.out.println("Failed to read thumbnail info: ");
+			e.printStackTrace();
+			return null;
+		}
 	}
 	
 	private static String getDashboardName(String fileName) {
