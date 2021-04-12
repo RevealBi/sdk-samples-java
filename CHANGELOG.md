@@ -2,6 +2,9 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.1] - 2021-04-08
+- Added a new subtitle property to data sources in JS API that (if present) replaces the connection information in the UI.
+
 ## [1.0.0] - 2021-04-05
 
 - Added server-side Data Blending for Redshift, Postgres and MS SQL Server
