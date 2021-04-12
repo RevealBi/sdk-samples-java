@@ -4,6 +4,7 @@
 
 ## Basic Usage
 
+### Requirements
 RevealBI Java SDK requires **Java 11** or newer.
 
 ### Add Maven dependency
