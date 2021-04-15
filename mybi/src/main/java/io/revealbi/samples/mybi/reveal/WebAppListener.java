@@ -17,8 +17,10 @@ import com.infragistics.reveal.engine.init.InitializeParameterBuilder;
 
 import io.revealbi.samples.mybi.dashboards.CredentialRepositoryFactory;
 import io.revealbi.samples.mybi.dashboards.DashboardRepositoryFactory;
+import io.revealbi.samples.mybi.dashboards.DataSourcesRepositoryFactory;
 import io.revealbi.samples.mybi.dashboards.FileSystemCredentialRepository;
 import io.revealbi.samples.mybi.dashboards.FileSystemDashboardRepository;
+import io.revealbi.samples.mybi.dashboards.FileSystemDataSourcesRepository;
 import io.revealbi.samples.mybi.jsp.DataSourcesHelper;
 import io.revealbi.samples.mybi.rest.CorsFilter;
 
@@ -39,6 +41,7 @@ public class WebAppListener implements ServletContextListener {
 		DataSourcesHelper.setFileName(new File(rootDir, "datasources.js").getAbsolutePath());
 		DashboardRepositoryFactory.setInstance(new FileSystemDashboardRepository(getDashboardsRootDir(rootDir)));
 		CredentialRepositoryFactory.setInstance(new FileSystemCredentialRepository(getCredentialsFilePath(rootDir)));
+		DataSourcesRepositoryFactory.setInstance(new FileSystemDataSourcesRepository(getDataSourcesFilePath(rootDir)));
 
 		RevealEngineInitializer.initialize(new InitializeParameterBuilder().
 				setAuthProvider(CredentialRepositoryFactory.getInstance()).
@@ -64,6 +67,10 @@ public class WebAppListener implements ServletContextListener {
 	}
 	private static String getCredentialsFilePath(String rootDir) {
 		return new File(rootDir, "credentials.json").getAbsolutePath();
+	}
+
+	private static String getDataSourcesFilePath(String rootDir) {
+		return new File(rootDir, "datasources.json").getAbsolutePath();
 	}
 	
 	private static String getLicenseKey(String rootDir) {
