@@ -26,7 +26,7 @@ and the following dependency, both to your `pom.xml` file:
 <dependency>
   <groupId>com.infragistics.reveal.sdk</groupId>
   <artifactId>reveal-sdk</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
 </dependency>
 ```
 ## Configuration
@@ -115,7 +115,7 @@ If you have an existing Tomcat (or any other JEE container) application and you 
            <version>2.32</version>
      </dependency>
 ```
-- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.1):
+- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.2):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
@@ -137,7 +137,7 @@ If you have an existing Spring Boot application and you want to add Reveal, you 
    </dependency>
 ```
 - Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version
-you’re using, like 1.0.1):
+you’re using, like 1.0.2):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
