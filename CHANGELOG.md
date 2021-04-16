@@ -2,6 +2,9 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.2] - 2021-04-16
+- Fixed an issue with the trial watermark displayed in some cases, even when a valid license is set.
+
 ## [1.0.1] - 2021-04-08
 - Added a new subtitle property to data sources in JS API that (if present) replaces the connection information in the UI.
 
