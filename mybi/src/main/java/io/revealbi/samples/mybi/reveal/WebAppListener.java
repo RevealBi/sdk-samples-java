@@ -82,6 +82,11 @@ public class WebAppListener implements ServletContextListener {
 		}
 	}
 	
+	public static String getPathForConfigurationFile(ServletContext context, String relativePath) {
+		String rootDir = getRootDir(context);
+		return rootDir + "/" + relativePath;
+	}
+	
 	private static String getFirstLineTrimmed(File file) {
 		try (FileReader fileReader = new FileReader(file);
 				BufferedReader reader = new BufferedReader(fileReader)) {

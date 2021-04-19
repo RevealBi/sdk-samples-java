@@ -15,6 +15,7 @@ public class JAXActivator extends Application {
 		HashSet<Class<?>> classes = new HashSet<Class<?>>();
 		classes.add(DashboardsResource.class);
 		classes.add(DataSourcesResource.class);
+		classes.add(LoginResource.class);
 		classes.add(CorsFilter.class);
 		return Collections.unmodifiableSet(classes);
 	}

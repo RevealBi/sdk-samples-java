@@ -1,28 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app id="mybi" version="2.4"
-	xmlns="http://java.sun.com/xml/ns/j2ee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<security-constraint>
-		<web-resource-collection>
-			<web-resource-name>Whole app requires authentication</web-resource-name>
-			<url-pattern>/*</url-pattern>
-			<http-method>GET</http-method>
-			<http-method>POST</http-method>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>mybi</role-name>
-		</auth-constraint>
-
-		<user-data-constraint>
-			<!-- transport-guarantee can be CONFIDENTIAL, INTEGRAL, or NONE -->
-			<transport-guarantee>NONE</transport-guarantee>
-		</user-data-constraint>
-	</security-constraint>
-	<security-role>
-		<role-name>mybi</role-name>
-	</security-role>
-	<login-config>
-		<auth-method>BASIC</auth-method>
-	</login-config>
+<web-app xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee https://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"	
+	version="3.1">
+	<context-param>
+    	<param-name>shiroEnvironmentClass</param-name>
+    	<param-value>io.revealbi.samples.mybi.shiro.WebEnvironment</param-value>
+	</context-param>
 </web-app>
