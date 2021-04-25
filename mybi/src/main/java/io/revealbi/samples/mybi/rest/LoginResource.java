@@ -16,21 +16,35 @@ import org.apache.shiro.authc.UnknownAccountException;
 import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 
+import io.revealbi.samples.mybi.shiro.BearerProviderToken;
+import io.revealbi.samples.mybi.shiro.DisplayNamePrincipal;
+
 @Path("/login")
 public class LoginResource {	
 	@POST
 	@Produces("application/json")
 	@Consumes("application/json")
 	public LoginResponse login(LoginRequest request) throws IOException {
-		if (request == null || request.username == null || request.password == null) {
+		if (request == null || (request.accessToken == null && (request.username == null || request.password == null))) {
 			return new LoginResponse(false, null, "Invalid request");
 		}
-		Subject subject = SecurityUtils.getSubject();		
-		AuthenticationToken token = new UsernamePasswordToken(request.username, request.password);
+		Subject subject = SecurityUtils.getSubject();				
+		AuthenticationToken token;
+		if (request.accessToken != null) {
+			token = new BearerProviderToken(request.provider, request.accessToken);
+		} else {
+			token = new UsernamePasswordToken(request.username, request.password);
+		}
 		
 		try {
 			subject.login(token);
-			return new LoginResponse(true, subject.getSession().getId().toString(), "Success");
+			DisplayNamePrincipal displayNamePrincipal = subject.getPrincipals().oneByType(DisplayNamePrincipal.class);
+			LoginResponse response = new LoginResponse(true, subject.getSession().getId().toString(), "Success");
+			if (displayNamePrincipal != null) {
+				response.displayName = displayNamePrincipal.getDisplayName();
+			}
+			response.emailAddress = subject.getPrincipal().toString();
+			return response;
         } catch (UnknownAccountException uae) {
 			uae.printStackTrace();
 			return new LoginResponse(false, null, "User not found or invalid credentials");
@@ -57,6 +71,8 @@ public class LoginResource {
 	public static class LoginRequest {
 		public String username;
 		public String password;
+		public String provider;
+		public String accessToken;
 	}
 	
 	public static class LoginResponse {
@@ -68,5 +84,7 @@ public class LoginResource {
 		public boolean succeeded;
 		public String message;
 		public String sessionId;
+		public String displayName;
+		public String emailAddress;
 	}
 }
