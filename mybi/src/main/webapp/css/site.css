@@ -245,3 +245,68 @@ section {
         margin-top: 8px;
     }
 }
+.Login-Container {
+    padding-top: 50px;
+    display: flex;
+    width: 100vw;
+}
+
+.Login-Card {
+  box-sizing: border-box;
+  min-width: 400px;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Login-Form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.Login-Input {
+  padding: 1rem;
+  border: 1px solid #999;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+}
+
+.Login-Button {
+  background: linear-gradient(to bottom, #6371c7, #5563c1);
+  border-color: #3f4eae;
+  border-radius: 3px;
+  padding: 1rem;
+  color: white;
+  font-weight: 700;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  max-width: 200px;
+  align-self: center;
+}
+
+.Login-Button:disabled {
+	background: linear-gradient(to bottom, #b3b3b3, #c3c3c3);
+	border-color: #b8b8b8;
+}
+
+.Login-Button-O365 {
+  background: linear-gradient(to bottom, #6371c7, #5563c1);
+  border-color: #3f4eae;
+  border-radius: 3px;
+  padding: 1rem;
+  color: white;
+  font-weight: 700;
+  width: 100%;
+  margin-bottom: 1rem;
+  font-size: 0.8rem;
+  align-self: center;
+}
+
+.Login-Error {
+  background-color: red;
+}

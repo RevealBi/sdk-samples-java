@@ -27,8 +27,21 @@
 			"class": "my-new-list",
 			"html": items.join( "" )
 		}).appendTo( "body" );
+	}).fail(function(xhr) {
+		if (xhr.status == 401) {
+			location.pathname="${pageContext.request.contextPath}/login.jsp";
+		}
 	});
+	
+	function signOut() {
+		$.ajax({
+			method: 'DELETE',
+			url: '${pageContext.request.contextPath}/api/login'
+		}).done(function() {
+			location.pathname="${pageContext.request.contextPath}/index.jsp";
+		})
+	}
 </script>
-<p><a href="dashboard.jsp">New dashboard</a>
+<p><a href="dashboard.jsp">New dashboard</a> | <a href="javascript:signOut()">Sign out</a></p>
 </body>
 </html>

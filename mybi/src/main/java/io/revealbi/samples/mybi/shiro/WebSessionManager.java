@@ -55,7 +55,10 @@ public class WebSessionManager extends DefaultWebSessionManager {
 	@Override
 	protected Serializable getSessionId(ServletRequest request, ServletResponse response) {
 		if (request instanceof HttpServletRequest) {
-			return ((HttpServletRequest)request).getHeader(SESSION_HEADER_NAME);
+			String headerValue = ((HttpServletRequest)request).getHeader(SESSION_HEADER_NAME);
+			if (headerValue != null) {
+				return headerValue;
+			}
 		}
 		return super.getSessionId(request, response);
 	}
