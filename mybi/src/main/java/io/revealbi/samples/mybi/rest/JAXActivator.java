@@ -7,6 +7,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import org.glassfish.jersey.media.multipart.MultiPartFeature;
+
 @ApplicationPath("api")
 public class JAXActivator extends Application {
 	
@@ -17,6 +19,7 @@ public class JAXActivator extends Application {
 		classes.add(DataSourcesResource.class);
 		classes.add(LoginResource.class);
 		classes.add(CorsFilter.class);
+		classes.add(MultiPartFeature.class);
 		return Collections.unmodifiableSet(classes);
 	}
 }

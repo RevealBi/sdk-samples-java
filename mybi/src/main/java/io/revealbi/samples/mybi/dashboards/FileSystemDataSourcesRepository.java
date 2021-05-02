@@ -2,17 +2,11 @@ package io.revealbi.samples.mybi.dashboards;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
-
-import com.infragistics.reveal.sdk.api.IRVDataSourceCredential;
-import com.infragistics.reveal.sdk.api.RVUsernamePasswordDataSourceCredential;
-import com.infragistics.reveal.sdk.api.model.RVDashboardDataSource;
 
 public class FileSystemDataSourcesRepository implements IDataSourcesRepository {
 	private static Logger log = Logger.getLogger(FileSystemDataSourcesRepository.class.getName());
