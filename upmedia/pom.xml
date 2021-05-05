@@ -7,7 +7,7 @@
 	<repositories>
 		<repository>
 			<id>reveal.public</id>
-			<url>http://revealpackages.eastus.cloudapp.azure.com/repository/public</url>
+			<url>https://revealpackages.eastus.cloudapp.azure.com/repository/public</url>
 		</repository>	
 	</repositories>
 	<dependencies>
