@@ -2,6 +2,12 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.3] - 2021-05-06
+- Added Snowflake connector, including support for data blending between tables in the same Snowflake database.
+- The Reveal BI Engine now supports the same limits supported in other platforms.
+  - This is to avoid the server to crash if a user creates a visualization that requires too much data to be sent back to the client.
+  - There are a few new properties in InitializeParameterBuilder to control this: maxDownloadSize, maxInMemoryCells, maxStorageCells, maxStringCellSize, maxTotalStringSize.
+
 ## [1.0.2] - 2021-04-16
 - Fixed an issue with the trial watermark displayed in some cases, even when a valid license is set.
 
