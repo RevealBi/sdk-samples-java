@@ -5,7 +5,7 @@ import javax.ws.rs.container.ContainerRequestContext;
 
 import com.infragistics.reveal.sdk.rest.RVContainerRequestAwareUserContextProvider;
 
-import io.revealbi.samples.mybi.rest.UserIdProvider;
+import io.revealbi.sdk.ext.rest.UserIdProvider;
 
 public class RevealUserContextProvider extends RVContainerRequestAwareUserContextProvider {
 
