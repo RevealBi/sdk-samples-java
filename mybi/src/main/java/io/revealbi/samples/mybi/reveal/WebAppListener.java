@@ -12,17 +12,14 @@ import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
 
-import com.infragistics.reveal.engine.init.RevealEngineInitializer;
 import com.infragistics.reveal.engine.init.InitializeParameterBuilder;
+import com.infragistics.reveal.engine.init.RevealEngineInitializer;
 
-import io.revealbi.samples.mybi.dashboards.CredentialRepositoryFactory;
-import io.revealbi.samples.mybi.dashboards.DashboardRepositoryFactory;
-import io.revealbi.samples.mybi.dashboards.DataSourcesRepositoryFactory;
-import io.revealbi.samples.mybi.dashboards.FileSystemCredentialRepository;
-import io.revealbi.samples.mybi.dashboards.FileSystemDashboardRepository;
-import io.revealbi.samples.mybi.dashboards.FileSystemDataSourcesRepository;
 import io.revealbi.samples.mybi.jsp.DataSourcesHelper;
 import io.revealbi.samples.mybi.rest.CorsFilter;
+import io.revealbi.sdk.ext.api.CredentialRepositoryFactory;
+import io.revealbi.sdk.ext.api.DashboardRepositoryFactory;
+import io.revealbi.sdk.ext.fs.FileSystemExtFactory;
 
 @WebListener
 public class WebAppListener implements ServletContextListener {
@@ -38,10 +35,10 @@ public class WebAppListener implements ServletContextListener {
 		
 		log.info("Initializing mybi with path: " + rootDir);
 		
+		//temporary to keep the JSP version working, remove when fully replaced with the React one
 		DataSourcesHelper.setFileName(new File(rootDir, "datasources.js").getAbsolutePath());
-		DashboardRepositoryFactory.setInstance(new FileSystemDashboardRepository(getDashboardsRootDir(rootDir)));
-		CredentialRepositoryFactory.setInstance(new FileSystemCredentialRepository(getCredentialsFilePath(rootDir)));
-		DataSourcesRepositoryFactory.setInstance(new FileSystemDataSourcesRepository(getDataSourcesFilePath(rootDir)));
+		
+		FileSystemExtFactory.registerAllServices(rootDir);
 
 		RevealEngineInitializer.initialize(new InitializeParameterBuilder().
 				setAuthProvider(CredentialRepositoryFactory.getInstance()).
@@ -61,18 +58,7 @@ public class WebAppListener implements ServletContextListener {
 		}
 		return System.getProperty("mybi.root", defaultPath);
 	}
-	
-	private static String getDashboardsRootDir(String rootDir) {
-		return new File(rootDir, "dashboards").getAbsolutePath();
-	}
-	private static String getCredentialsFilePath(String rootDir) {
-		return new File(rootDir, "credentials.json").getAbsolutePath();
-	}
-
-	private static String getDataSourcesFilePath(String rootDir) {
-		return new File(rootDir, "datasources.json").getAbsolutePath();
-	}
-	
+		
 	private static String getLicenseKey(String rootDir) {
 		File file = new File(rootDir, "license.dat");
 		if (file.exists() && file.canRead()) {

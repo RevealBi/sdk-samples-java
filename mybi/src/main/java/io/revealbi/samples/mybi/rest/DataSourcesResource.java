@@ -6,8 +6,8 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
-import io.revealbi.samples.mybi.dashboards.DataSourcesInfo;
-import io.revealbi.samples.mybi.dashboards.DataSourcesRepositoryFactory;
+import io.revealbi.sdk.ext.api.DataSourcesInfo;
+import io.revealbi.sdk.ext.api.DataSourcesRepositoryFactory;
 
 @Path("/dataSources")
 public class DataSourcesResource extends BaseResource {	

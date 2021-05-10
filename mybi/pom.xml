@@ -11,12 +11,29 @@
 			<id>reveal.public</id>
 			<url>http://revealpackages.eastus.cloudapp.azure.com/repository/public</url>
 		</repository>
+		<repository>
+			<id>reveal.snapshots</id>
+			<url>http://revealpackages.eastus.cloudapp.azure.com/repository/snapshots</url>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
 	</repositories>
 	<dependencies>
 		<dependency>
 			<groupId>com.infragistics.reveal.sdk</groupId>
 			<artifactId>reveal-sdk</artifactId>
-			<version>1.0.3-SNAPSHOT</version>
+			<version>${reveal.sdk.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.revealbi.sdk.ext</groupId>
+			<artifactId>reveal-ext-api</artifactId>
+			<version>${reveal.ext.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>io.revealbi.sdk.ext</groupId>
+			<artifactId>reveal-ext-fs</artifactId>
+			<version>${reveal.ext.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
@@ -91,18 +108,13 @@
 			</plugin>
 		</plugins>
 	</build>
+	<properties>
+		<reveal.ext.version>1.0.0-SNAPSHOT</reveal.ext.version>
+		<reveal.sdk.version>1.0.4-SNAPSHOT</reveal.sdk.version>
+	</properties>
 	<profiles>
 		<profile>
 			<id>snapshots</id>
-			<repositories>
-				<repository>
-					<id>reveal.snapshots</id>
-					<url>http://revealpackages.eastus.cloudapp.azure.com/repository/snapshots</url>
-					<snapshots>
-						<enabled>true</enabled>
-					</snapshots>
-				</repository>
-			</repositories>
 			<dependencies>
 				<dependency>
 					<groupId>com.infragistics.reveal.sdk</groupId>

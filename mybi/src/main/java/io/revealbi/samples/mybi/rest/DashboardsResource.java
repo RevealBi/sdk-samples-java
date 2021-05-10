@@ -27,8 +27,8 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 import com.infragistics.reveal.sdk.api.model.RVDashboardDocument;
 import com.infragistics.reveal.sdk.util.RVSerializationUtilities;
 
-import io.revealbi.samples.mybi.dashboards.DashboardInfo;
-import io.revealbi.samples.mybi.dashboards.DashboardRepositoryFactory;
+import io.revealbi.sdk.ext.api.DashboardInfo;
+import io.revealbi.sdk.ext.api.DashboardRepositoryFactory;
 
 @Path("/dashboards")
 public class DashboardsResource extends BaseResource {	
