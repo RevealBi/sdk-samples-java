@@ -1,0 +1,17 @@
+package io.revealbi.samples.browser.reveal;
+
+
+import javax.ws.rs.container.ContainerRequestContext;
+
+import com.infragistics.reveal.sdk.rest.RVContainerRequestAwareUserContextProvider;
+
+import io.revealbi.sdk.ext.rest.UserIdProvider;
+
+public class RevealUserContextProvider extends RVContainerRequestAwareUserContextProvider {
+
+	@Override
+	protected String getUserId(ContainerRequestContext requestContext) {
+		return UserIdProvider.getUserId(requestContext);
+	}
+
+}
