@@ -38,7 +38,7 @@ public class WebAppListener implements ServletContextListener {
 		//temporary to keep the JSP version working, remove when fully replaced with the React one
 		DataSourcesHelper.setFileName(new File(rootDir, "datasources.js").getAbsolutePath());
 		
-		FileSystemExtFactory.registerAllServices(rootDir);
+		FileSystemExtFactory.registerAllServices(rootDir, true);
 
 		RevealEngineInitializer.initialize(new InitializeParameterBuilder().
 				setAuthProvider(CredentialRepositoryFactory.getInstance()).
