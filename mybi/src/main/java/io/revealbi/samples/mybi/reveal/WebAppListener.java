@@ -17,8 +17,10 @@ import com.infragistics.reveal.engine.init.RevealEngineInitializer;
 
 import io.revealbi.samples.mybi.jsp.DataSourcesHelper;
 import io.revealbi.samples.mybi.rest.CorsFilter;
+import io.revealbi.sdk.ext.api.AuthorizationProviderFactory;
 import io.revealbi.sdk.ext.api.CredentialRepositoryFactory;
 import io.revealbi.sdk.ext.api.DashboardRepositoryFactory;
+import io.revealbi.sdk.ext.auth.simple.AuthenticatedAllowAllAuthorizationProvider;
 import io.revealbi.sdk.ext.fs.FileSystemExtFactory;
 
 @WebListener
@@ -38,6 +40,7 @@ public class WebAppListener implements ServletContextListener {
 		//temporary to keep the JSP version working, remove when fully replaced with the React one
 		DataSourcesHelper.setFileName(new File(rootDir, "datasources.js").getAbsolutePath());
 		
+		AuthorizationProviderFactory.setInstance(new AuthenticatedAllowAllAuthorizationProvider());
 		FileSystemExtFactory.registerAllServices(rootDir, true);
 
 		RevealEngineInitializer.initialize(new InitializeParameterBuilder().
