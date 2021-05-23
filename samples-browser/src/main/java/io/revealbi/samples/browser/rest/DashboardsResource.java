@@ -16,6 +16,6 @@ public class DashboardsResource extends io.revealbi.sdk.ext.rest.DashboardsResou
 	@Produces(MediaType.APPLICATION_JSON)
 	@Path("/tag/{tag}")
 	public DashboardInfo[] getDashboardsWithTag(@PathParam("tag") String tag) throws IOException {
-		return TagsService.getInstance().getDashboardsWithTag(tag);
+		return TagsService.getInstance().getDashboardsWithTag(getUserId(), tag);
 	}	
 }

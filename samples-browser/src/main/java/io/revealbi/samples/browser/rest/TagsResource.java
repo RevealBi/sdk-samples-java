@@ -12,11 +12,14 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response.Status;
 
 import io.revealbi.samples.browser.reveal.TagsService;
 import io.revealbi.samples.browser.reveal.TagsService.TagDefinition;
 import io.revealbi.sdk.ext.rest.BaseResource;
+import io.revealbi.sdk.ext.rest.UserIdProvider;
 
 @Path("/tags")
 public class TagsResource extends BaseResource {
@@ -38,6 +41,9 @@ public class TagsResource extends BaseResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/{dashboardId}")
 	public void setDashboardTags(@PathParam("dashboardId") String dashboardId, TagsList tags) throws IOException {
+		if (UserIdProvider.getUserId(requestContext) == null) {
+			throw new WebApplicationException(Status.FORBIDDEN);
+		}
 		Set<String> tagsSet = tags.tags == null ? new HashSet<String>() : new HashSet<String>(tags.tags);
 		TagsService.getInstance().setDashboardTags(dashboardId, tagsSet);
 	}

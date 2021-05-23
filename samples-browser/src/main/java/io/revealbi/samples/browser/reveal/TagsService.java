@@ -18,8 +18,11 @@ import javax.json.bind.Jsonb;
 import javax.json.bind.JsonbBuilder;
 import javax.json.bind.JsonbConfig;
 
+import io.revealbi.sdk.ext.api.AuthorizationProviderFactory;
 import io.revealbi.sdk.ext.api.DashboardInfo;
 import io.revealbi.sdk.ext.api.DashboardRepositoryFactory;
+import io.revealbi.sdk.ext.api.IAuthorizationProvider;
+import io.revealbi.sdk.ext.api.IAuthorizationProvider.DashboardActionType;
 
 public class TagsService {
 	private static Logger log = Logger.getLogger(TagsService.class.getName());
@@ -45,16 +48,17 @@ public class TagsService {
 		return tags.tags;
 	}
 	
-	public DashboardInfo[] getDashboardsWithTag(String tag) throws IOException {
+	public DashboardInfo[] getDashboardsWithTag(String userId, String tag) throws IOException {
 		Set<String> dashboardIds = tags.getDashboardsWithTag(tag);
 		if (dashboardIds.isEmpty()) {
 			return new DashboardInfo[0];
 		}
+		IAuthorizationProvider auth = AuthorizationProviderFactory.getInstance();
 		SamplesDashboardRepository repo = (SamplesDashboardRepository)DashboardRepositoryFactory.getInstance();
 		List<DashboardInfo> result = new ArrayList<DashboardInfo>();
 		for (String dashboardId : dashboardIds) {
 			DashboardInfo d = repo.getDashboardInfo(null, dashboardId);
-			if (d != null) {
+			if (d != null && (auth == null || auth.hasDashboardPermission(userId, dashboardId, DashboardActionType.READ))) {
 				result.add(d);
 			}
 		}
