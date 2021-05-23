@@ -9,7 +9,6 @@ import javax.ws.rs.core.Application;
 
 import org.glassfish.jersey.media.multipart.MultiPartFeature;
 
-import io.revealbi.sdk.ext.rest.DashboardsResource;
 import io.revealbi.sdk.ext.rest.DataSourcesResource;
 
 @ApplicationPath("api")
@@ -24,6 +23,7 @@ public class JAXActivator extends Application {
 		classes.add(MyInfoResource.class);
 		classes.add(CorsFilter.class);
 		classes.add(MultiPartFeature.class);
+		classes.add(TagsResource.class);
 		return Collections.unmodifiableSet(classes);
 	}
 }

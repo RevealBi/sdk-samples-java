@@ -7,6 +7,7 @@ import javax.ws.rs.DELETE;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -22,8 +23,8 @@ import io.revealbi.samples.browser.shiro.DisplayNamePrincipal;
 @Path("/login")
 public class LoginResource {	
 	@POST
-	@Produces("application/json")
-	@Consumes("application/json")
+	@Produces(MediaType.APPLICATION_JSON)
+	@Consumes(MediaType.APPLICATION_JSON)
 	public LoginResponse login(LoginRequest request) throws IOException {
 		if (request == null || (request.accessToken == null && (request.username == null || request.password == null))) {
 			return new LoginResponse(false, null, "Invalid request");

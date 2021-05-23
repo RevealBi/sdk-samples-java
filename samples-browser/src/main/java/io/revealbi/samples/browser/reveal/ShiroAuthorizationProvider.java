@@ -3,7 +3,6 @@ package io.revealbi.samples.browser.reveal;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.subject.Subject;
 
-import io.revealbi.sdk.ext.api.IAuthorizationProvider;
 import io.revealbi.sdk.ext.auth.BaseAuthorizationProvider;
 
 public class ShiroAuthorizationProvider extends BaseAuthorizationProvider {

@@ -36,6 +36,8 @@ public class WebAppListener implements ServletContextListener {
 		log.info("Initializing samples-browser with path: " + rootDir);
 		
 		FileSystemExtFactory.registerAllServices(rootDir, false);
+		DashboardRepositoryFactory.setInstance(new SamplesDashboardRepository(new File(rootDir, "dashboards").getAbsolutePath(), false));
+		TagsService.setInstance(new TagsService(new File(rootDir, "tags.json").getAbsolutePath()));		
 		AuthorizationProviderFactory.setInstance(new ShiroAuthorizationProvider(true));
 
 		RevealEngineInitializer.initialize(new InitializeParameterBuilder().
