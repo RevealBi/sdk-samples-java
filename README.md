@@ -153,3 +153,9 @@ you’re using, like 1.0.2):
   - The parameters passed to RevealEngineInitializer.initialize (UpmediaAuthenticationProvider, UpmediaUserContextProvider, UpmediaDashboardProvider) are the providers used to customize Reveal, you’ll need to create your own providers when integrating Reveal into your application. 
 
 ## Returning the list of dashboards
+With the May-2021 release the Web SDK includes a component that renders a preview (a thumbnail) for a dashboard, the information required to render that preview is returned from the server. This section describes how to add that endpoint to your server application.
+
+The upmedia-backend projects ([upmedia-backend-tomcat](upmedia-backend-tomcat) and [upmedia-backend-spring](upmedia-backend-spring)) are both configured to return this list of dashboards, to verify it you can run any of them and the open this page in a browser: http://localhost:8080/upmedia-backend/reveal-api/dashboards.
+These samples are taking advantage of a new set of extensions to the Reveal SDK, published as open source projects, these projects provide base implementations to some services usually needed along the Reveal SDK, like services to return the list of dashboards, the list of data sources and credentials associated to them, authorization, etc.
+
+
