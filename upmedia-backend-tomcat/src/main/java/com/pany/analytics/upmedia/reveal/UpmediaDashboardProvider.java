@@ -5,10 +5,13 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.logging.Logger;
 
-import com.infragistics.reveal.sdk.api.IRVDashboardProvider;
-
 import io.revealbi.sdk.ext.base.BaseDashboardRepository;
 
+/**
+ * Dashboard provider implementation for Upmedia sample, we're extending BaseDashboardRepository in 
+ * order to return the list of dashboards and display them using thumbnails (preview icons).
+ * This implementation doesn't support saving or deleting dashboards.
+ */
 public class UpmediaDashboardProvider extends BaseDashboardRepository {
 	private static Logger log = Logger.getLogger(UpmediaDashboardProvider.class.getName());
 
@@ -37,7 +40,7 @@ public class UpmediaDashboardProvider extends BaseDashboardRepository {
 	}
 
 	@Override
-	public void deleteDashboard(String arg0, String arg1) throws IOException {
+	public void deleteDashboard(String userId, String dashboardId) throws IOException {
 		throw new IOException("Not implemented");
 	}
 }
