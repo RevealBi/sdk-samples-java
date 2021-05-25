@@ -156,6 +156,47 @@ you’re using, like 1.0.2):
 With the May-2021 release the Web SDK includes a component that renders a preview (a thumbnail) for a dashboard, the information required to render that preview is returned from the server. This section describes how to add that endpoint to your server application.
 
 The upmedia-backend projects ([upmedia-backend-tomcat](upmedia-backend-tomcat) and [upmedia-backend-spring](upmedia-backend-spring)) are both configured to return this list of dashboards, to verify it you can run any of them and the open this page in a browser: http://localhost:8080/upmedia-backend/reveal-api/dashboards.
-These samples are taking advantage of a new set of extensions to the Reveal SDK, published as open source projects, these projects provide base implementations to some services usually needed along the Reveal SDK, like services to return the list of dashboards, the list of data sources and credentials associated to them, authorization, etc.
+These samples are taking advantage of a new set of extensions to the Reveal SDK ([sdk-java-ext](https://github.com/RevealBi/sdk-java-ext)), these projects provide base implementations to some services usually needed along the Reveal SDK, like services to return the list of dashboards, the list of data sources and credentials associated to them, authorization, etc.
 
+In particular, for the list of dashboards, the upmedia-backend samples are using the following classes:
+- [IDashboardRepository](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/api/IDashboardRepository.java): An interface extending IRVDashboardProvider (the SDK dashboard provider interface) with two methods for listing and deleting dashboards.
+- [BaseDashboardRepository](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/base/BaseDashboardRepository.java): A base implementation of IDashboardRepository to simplify the implementation of dashboard listing, you just need to implement the method getUserDashboardIds (that returns the list of dashboard ids available for a given user) and it will take care of returning the dashboard list needed client side to render the thumbnails.
+- [DashboardRepositoryFactory](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/api/DashboardRepositoryFactory.java): a class used to register the singleton instance of IDashboardRepository that should be used.
+- [DashboardsResource](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-rest/src/main/java/io/revealbi/sdk/ext/rest/DashboardsResource.java): A REST service that uses the implementation of IDashboardRepository and returns the list of dashboards to the client.
 
+If you take a look at [UpmediaDashboardProvider](upmedia-backend-tomcat/src/main/java/com/pany/analytics/upmedia/reveal/UpmediaDashboardProvider.java) you'll see we're implementing getUserDashboardIds() as follows:
+```java
+@Override
+protected String[] getUserDashboardIds(String arg0) throws IOException {
+    return new String[] {
+        "Campaigns",
+	"Manufacturing",
+	"Marketing",
+	"Sales"
+    };
+}
+```
+by returning a hard-coded list of dashboards, including those files in [resources](upmedia-backend-tomcat/src/main/resources), that we load in the implementation of getDashboard:
+```java
+@Override
+public InputStream getDashboard(String userId, String dashboardId) throws IOException {
+    InputStream dashboardStream = getClass().getResourceAsStream("/" + dashboardId + ".rdash");
+    if (dashboardStream == null) {
+        log.warning("Dashboard not found: " + dashboardId);
+    }
+    return dashboardStream;
+}
+```
+
+All of this is connected when Reveal is initialized, in [WebAppListener](upmedia-backend-tomcat/src/main/java/com/pany/analytics/upmedia/reveal/WebAppListener.java):
+```java
+UpmediaDashboardProvider dashboardProvider = new UpmediaDashboardProvider();
+	
+//set it as the dashboard repository, used by DashboardsResource (that returns the list of dashboards at /reveal-api/dashboards)
+DashboardRepositoryFactory.setInstance(dashboardProvider);
+		
+//by default all access is denied, we're setting here a provider that allows reading all dashboards and listing them
+AuthorizationProviderFactory.setInstance(new AllowAllReadAuthorizationProvider());
+```
+Before returning a dashboard or the list of them, the REST service implemented in [DashboardsResource](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-rest/src/main/java/io/revealbi/sdk/ext/rest/DashboardsResource.java) checks for permissions, using the [IAuthorizationProvider](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/api/IAuthorizationProvider.java) instance set in [AuthorizationProviderFactory](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/api/AuthorizationProviderFactory.java).
+By default, this factory uses a "deny all" implementation, so you need to set some other implementation in order to access dashboards, there's a convenience implementation you can use to grant read-only access to all users: [AllowAllReadAuthorizationProvider](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/auth/simple/AllowAllReadAuthorizationProvider.java).
