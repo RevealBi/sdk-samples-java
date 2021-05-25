@@ -199,4 +199,5 @@ DashboardRepositoryFactory.setInstance(dashboardProvider);
 AuthorizationProviderFactory.setInstance(new AllowAllReadAuthorizationProvider());
 ```
 Before returning a dashboard or the list of them, the REST service implemented in [DashboardsResource](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-rest/src/main/java/io/revealbi/sdk/ext/rest/DashboardsResource.java) checks for permissions, using the [IAuthorizationProvider](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/api/IAuthorizationProvider.java) instance set in [AuthorizationProviderFactory](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/api/AuthorizationProviderFactory.java).
+
 By default, this factory uses a "deny all" implementation, so you need to set some other implementation in order to access dashboards, there's a convenience implementation you can use to grant read-only access to all users: [AllowAllReadAuthorizationProvider](https://github.com/RevealBi/sdk-java-ext/blob/main/reveal-ext-api/src/main/java/io/revealbi/sdk/ext/auth/simple/AllowAllReadAuthorizationProvider.java).
