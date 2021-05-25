@@ -151,3 +151,5 @@ you’re using, like 1.0.2):
   $.ig.RevealSdkSettings.setBaseUrl("http://localhost:8080/upmedia-backend/reveal-api/");
 ```
   - The parameters passed to RevealEngineInitializer.initialize (UpmediaAuthenticationProvider, UpmediaUserContextProvider, UpmediaDashboardProvider) are the providers used to customize Reveal, you’ll need to create your own providers when integrating Reveal into your application. 
+
+## Returning the list of dashboards
