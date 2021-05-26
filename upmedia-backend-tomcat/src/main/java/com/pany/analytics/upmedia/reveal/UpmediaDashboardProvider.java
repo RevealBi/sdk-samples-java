@@ -16,7 +16,7 @@ public class UpmediaDashboardProvider extends BaseDashboardRepository {
 	private static Logger log = Logger.getLogger(UpmediaDashboardProvider.class.getName());
 
 	@Override
-	protected String[] getUserDashboardIds(String arg0) throws IOException {
+	protected String[] getUserDashboardIds(String userId) throws IOException {
 		return new String[] {
 			"Campaigns",
 			"Manufacturing",
