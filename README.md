@@ -243,6 +243,16 @@ RevealEngineInitializer.registerResource(DashboardsResource.class);
 #### How to confirm the dashboard repository is working fine
 For both Spring and Tomcat servers, assuming the port you're using is 8080 and you're using the suggested "reveal-api" path, you can get the list of dashboards using this URL: http://localhost:8080/upmedia-backend/reveal-api/dashboards, where "upmedia-backend" needs to be replaced with your application name.
 
+### Creating your own service without using the sdk-java-ext packages
+If you don't want to use the basic services in [sdk-java-ext](https://github.com/RevealBi/sdk-java-ext), you can create your own service returning the summary for your dashboards, here is a code snippet of what you need to do:
+```java
+InputStream in = getDashboard(userId, dashboardId);
+RVDashboardSummary summary = RVSerializationUtilities.getDashboardSummary(in);
+Map<String, Object> json = summary.toJson();
+```
+Where "in" is an InputStream with the contents of the dashboard in "rdash" format. The value of that map (json) is what you need client side to render the thumbnail.
+Now, you just need to serialize the "json" variable to JSON and send it to the client, that JSON document is what you need to pass as the dashboardInfo property to $.ig.RevealDashboardThumbnailView JS class client side.
+
 ### Out-of-the-box implementations
 In addition to the base auxiliary classes described before, there are ready to use implementations that provides repositories for dashboards, data sources and credentials and also the REST resources that exposes such services.
 
