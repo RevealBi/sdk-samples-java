@@ -240,6 +240,9 @@ You can do the same we do in [WebAppListener](upmedia-backend-tomcat/src/main/ja
 RevealEngineInitializer.registerResource(DashboardsResource.class);
 ```
 
+#### How to confirm the dashboard repository is working fine
+For both Spring and Tomcat servers, assuming the port you're using is 8080 and you're using the suggested "reveal-api" path, you can get the list of dashboards using this URL: http://localhost:8080/upmedia-backend/reveal-api/dashboards, where "upmedia-backend" needs to be replaced with your application name.
+
 ### Out-of-the-box implementations
 In addition to the base auxiliary classes described before, there are ready to use implementations that provides repositories for dashboards, data sources and credentials and also the REST resources that exposes such services.
 
