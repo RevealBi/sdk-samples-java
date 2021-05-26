@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>upmedia-sdk</groupId>
 	<artifactId>upmedia-backend-tomcat</artifactId>
-	<version>1.0.4-SNAPSHOT</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<repositories>
 		<repository>
@@ -16,16 +16,16 @@
 		<dependency>
 			<groupId>com.infragistics.reveal.sdk</groupId>
 			<artifactId>reveal-sdk</artifactId>
-			<version>1.0.3</version>
+			<version>1.0.4</version>
 		</dependency>
 		<dependency>
 			<groupId>io.revealbi.sdk.ext</groupId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<artifactId>reveal-ext-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>io.revealbi.sdk.ext</groupId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0.0</version>
 			<artifactId>reveal-ext-rest</artifactId>
 		</dependency>
 		<dependency>
