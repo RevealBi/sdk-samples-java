@@ -2,6 +2,35 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.4] - 2021-05-26
+- Added thumbnail (preview icon) JS component, more information in the new React sample: [upmedia-browser](https://github.com/RevealBi/sdk-samples-react/blob/feature/upmedia-browser/upmedia-browser/README.md) and in [sdk-samples-java](https://github.com/RevealBi/sdk-samples-java/blob/develop/README.md#returning-the-list-of-dashboards).
+- Added a new setting to include session cookies in requests to Reveal backend (which causes the "withCredentials" flag in jQuery.ajax to be turned on):
+```javascript
+$.ig.RevealSdkSettings.requestWithCredentialsFlag = true;
+```
+- Improved the "save" event to inform if the action is "saveAs" or a new dashboard is being saved, also allows to set the assigned name and dashboard id. Here sample code that handles the save event and asks for a new name when the dashboard is new or the action is "save as":
+```javascript
+view.onSave = function(rv, saveEvent) {
+  if (saveEvent.saveAs || saveEvent.isNew) {
+    var name = prompt("Dashboard name: ", saveEvent.name);
+    if (name != null) {
+      saveEvent.name = name;
+      saveEvent.dashboardId = RevealApi.RevealUtility.generateUID();
+    } else {
+      return;
+    }
+  }
+  saveEvent.saveFinished();
+};
+```
+- Bug fixes:
+  - The first chart in the dashboard will be exported even if you select another chart.
+  - Data Stores get displayed automatically in the data source navigator even when they haven't been passed through DataSourcesRequestedCallback.
+  - Fixed issue with MS SQL Server connections using instance name instead of port number.
+  - Fixed list of date formats available for DateTime data type.
+  - Added two new date formats for Date, DateTime and Day level aggregations including day of the week in short format.
+
+
 ## [1.0.3] - 2021-05-06
 - Added Snowflake connector, including support for data blending between tables in the same Snowflake database.
 - The Reveal BI Engine now supports the same limits supported in other platforms.
