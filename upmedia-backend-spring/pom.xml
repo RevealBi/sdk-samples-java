@@ -31,7 +31,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-jersey</artifactId>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-tomcat</artifactId>
@@ -47,6 +46,16 @@
 			<artifactId>reveal-sdk</artifactId>
 			<version>1.0.4</version>
 	   	</dependency>
+		<dependency>
+			<groupId>io.revealbi.sdk.ext</groupId>
+			<version>1.0.0</version>
+			<artifactId>reveal-ext-api</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>io.revealbi.sdk.ext</groupId>
+			<version>1.0.0</version>
+			<artifactId>reveal-ext-rest</artifactId>
+		</dependency>
 	</dependencies>
 
 	<build>

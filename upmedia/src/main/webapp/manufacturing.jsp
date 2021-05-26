@@ -14,14 +14,14 @@
                 window.revealView = new $.ig.RevealView("#revealView");
                 window.revealView.dashboard = dashboard;
                 window.revealView.onMaximizedVisualizationChanged = function () {
-                    if (window.revealView.getMaximizedVisualization() == null) {
+                    if (window.revealView.maximizedVisualization == null) {
                         for (i = 0; i < 8; i++) {
                             var id = getCheckboxId(i);
                             document.getElementById(id).checked = false;
                         }
                     }
                     else {
-                        var maximizedVisualization = window.revealView.getMaximizedVisualization();
+                        var maximizedVisualization = window.revealView.maximizedVisualization;
                         var index = window.revealView.dashboard.visualizations.indexOf(maximizedVisualization);
                         var id = getCheckboxId(index);
                         document.getElementById(id).checked = true;
@@ -38,7 +38,6 @@
         function onCheckChanged(index) {
             var id = getCheckboxId(index);
             if (document.getElementById(id).checked) {
-                maximizeVisualization(index);
                 for (i = 0; i < 8; i++) {
                     if (i == index) {
                         continue;
@@ -48,6 +47,7 @@
                         document.getElementById(otherId).checked = false;
                     }
                 }
+                maximizeVisualization(index);
             }
             else {
                 window.revealView.minimizeVisualization();
@@ -56,7 +56,7 @@
     </script>   
     <div class="bottomnavbar">
         <label class="container">
-            Overall Plant Production
+            Overall Plant Productivity
             <input type="checkbox" onchange="onCheckChanged('0')" id="vis0Checkbox"/>
             <span class="checkmark"></span>
         </label>
