@@ -3,6 +3,7 @@
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
 ## [1.0.4] - 2021-05-26
+- [JS Files](https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip)
 - Added thumbnail (preview icon) JS component, more information in the new React sample: [upmedia-browser](https://github.com/RevealBi/sdk-samples-react/blob/feature/upmedia-browser/upmedia-browser/README.md) and in [sdk-samples-java](https://github.com/RevealBi/sdk-samples-java/blob/develop/README.md#returning-the-list-of-dashboards).
 - Added a new setting to include session cookies in requests to Reveal backend (which causes the "withCredentials" flag in jQuery.ajax to be turned on):
 ```javascript
@@ -32,12 +33,14 @@ view.onSave = function(rv, saveEvent) {
 
 
 ## [1.0.3] - 2021-05-06
+- [JS Files](https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.3/reveal-sdk-distribution-1.0.3-js.zip)
 - Added Snowflake connector, including support for data blending between tables in the same Snowflake database.
 - The Reveal BI Engine now supports the same limits supported in other platforms.
   - This is to avoid the server to crash if a user creates a visualization that requires too much data to be sent back to the client.
   - There are a few new properties in InitializeParameterBuilder to control this: maxInMemoryCells, maxStorageCells, maxStringCellSize, maxTotalStringSize.
 
 ## [1.0.2] - 2021-04-16
+- [JS Files](https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.2/reveal-sdk-distribution-1.0.2-js.zip)
 - Fixed an issue with the trial watermark displayed in some cases, even when a valid license is set.
 
 ## [1.0.1] - 2021-04-08
