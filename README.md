@@ -2,6 +2,10 @@
 [![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=http%3A%2F%2Frevealpackages.eastus.cloudapp.azure.com%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](http://revealpackages.eastus.cloudapp.azure.com/#basicsearch/com.infragistics.reveal.reveal-sdk)
 #### [Website](https://revealbi.io/) | [Docs](https://help.revealbi.io/en/developer/java-sdk/overview.html)
 
+## Latest Artifacts:
+- Latest Version: 1.0.4
+- Latest JS Files: [here](https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip)
+
 ## Basic Usage
 
 ### Requirements
@@ -26,9 +30,15 @@ and the following dependency, both to your `pom.xml` file:
 <dependency>
   <groupId>com.infragistics.reveal.sdk</groupId>
   <artifactId>reveal-sdk</artifactId>
-  <version>1.0.2</version>
+  <version>1.0.4</version>
 </dependency>
 ```
+
+### Download JS Files
+For a given version, for example "1.0.4", you can download the JS files using this URL: https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip
+
+Please note there are two places in the URL where the version (1.0.4 in this case) is referenced, you need to change both to get JS files for another version.
+
 ## Configuration
 ### Export feature required configurations
 RevealBI for Java uses some native components for exporting Dashboards to different formats: Image, PDF, PPT and Excel.
@@ -115,7 +125,7 @@ If you have an existing Tomcat (or any other JEE container) application and you 
            <version>2.32</version>
      </dependency>
 ```
-- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.2):
+- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.4):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
@@ -137,7 +147,7 @@ If you have an existing Spring Boot application and you want to add Reveal, you 
    </dependency>
 ```
 - Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version
-you’re using, like 1.0.2):
+you’re using, like 1.0.4):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
