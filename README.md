@@ -1,5 +1,5 @@
 # Sample applications using [RevealBI](https://revealbi.io) Java SDK
-[![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=http%3A%2F%2Frevealpackages.eastus.cloudapp.azure.com%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](http://revealpackages.eastus.cloudapp.azure.com/#basicsearch/com.infragistics.reveal.reveal-sdk)
+[![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fmaven.revealbi.io%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](https://maven.revealbi.io/#basicsearch/com.infragistics.reveal.reveal-sdk)
 #### [Website](https://revealbi.io/) | [Docs](https://help.revealbi.io/en/developer/java-sdk/overview.html)
 
 ## Latest Artifacts:
@@ -20,7 +20,7 @@ To include RevealBI Java SDK into your application, simply add the following rep
 <repositories>
   <repository>
     <id>reveal.public</id>
-    <url>http://revealpackages.eastus.cloudapp.azure.com/repository/public</url>
+    <url>https://maven.revealbi.io/repository/public</url>
   </repository>	
 </repositories>
 ```
@@ -35,7 +35,7 @@ and the following dependency, both to your `pom.xml` file:
 ```
 
 ### Download JS Files
-For a given version, for example "1.0.4", you can download the JS files using this URL: https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip
+For a given version, for example "1.0.4", you can download the JS files using this URL: https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip
 
 Please note there are two places in the URL where the version (1.0.4 in this case) is referenced, you need to change both to get JS files for another version.
 
