@@ -19,7 +19,7 @@
 	<repositories>
 		<repository>
 			<id>reveal.public</id>
-			<url>https://revealpackages.eastus.cloudapp.azure.com/repository/public</url>
+			<url>https://maven.revealbi.io/repository/public</url>
 		</repository>	
 	</repositories>	
 	<dependencies>
@@ -80,7 +80,7 @@
 			<repositories>
 				<repository>
 					<id>reveal.snapshots</id>
-					<url>http://revealpackages.eastus.cloudapp.azure.com/repository/snapshots</url>
+					<url>https://maven.revealbi.io/repository/snapshots</url>
 					<snapshots>
 						<enabled>true</enabled>
 					</snapshots>
