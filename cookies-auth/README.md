@@ -14,7 +14,7 @@ Now you can deploy the file `target/cookies-auth.war` to your Tomcat server, thi
 Assuming Tomcat is using the standard port, you can access the application at http://localhost:8080/cookies-auth.
 
 ## What to expect
-This application includes a single page that renders a dashboard with two visualizations, these visualizations are using a test REST service that echoes the list of headers and cookies received, just for testing purposes.
+This application includes a single page that renders a dashboard with two visualizations, these visualizations are using a REST service that echoes the list of headers and cookies received, just for testing purposes.
 
 When you open the page at http://localhost:8080/cookies-auth you should see something like this:
 
@@ -33,7 +33,7 @@ To keep things simple for this sample, we'll use the standard "JSESSIONID" as th
 In [SampleUserContextProvider](src/main/java/io/revealbi/sdk/samples/cookiesauth/SampleUserContextProvider.java) you can see we're getting the current session id value.
 In a Java Web application running in Tomcat the JSESSIONID cookie is used to track sessions and by default it's enabled, so we're taking advantange of that for this sample, in your application you might need to use this same cookie, some other cookie or some other authentication header, the way to use it is the same.
 
-SampleUserContextProvider is extending RVBaseUserContextProvider and implementing the getUserContext method that returns a RVUserContext object, which contains both the userId and a set of properties.
+_SampleUserContextProvider_ is extending _RVBaseUserContextProvider_ and implementing the _getUserContext_ method that returns a _RVUserContext_ object, which contains both the userId and a set of properties.
 We're using this list of properties to store the sessionId, this way we can retrieve it later when credentials for a data source are requested.
 
 ```java
@@ -64,9 +64,9 @@ public class SampleUserContextProvider extends RVBaseUserContextProvider {
 In [SampleAuthenticationProvider](src/main/java/io/revealbi/sdk/samples/cookiesauth/SampleAuthenticationProvider.java) we're extending _RVBaseAuthenticationProvider_, that takes care of passing a _RVUserContext_ to _resolveCredentials_.
 We're using that _RVUserContext_ object to get the "JSESSIONID" property we installed in _SampleUserContextProvider_.
 
-In this case our data source is a REST API data source, and we want to pass a couple of cookies as the credentials for it, including the session id cookie, so we need to return a RVHeadersDataSourceCredentials object, this object can be used as the authentication credentials object only for REST or Web Resource data sources.
+In this case our data source is a REST API data source, and we want to pass a couple of cookies as the credentials for it, including the session id cookie, so we need to return a _RVHeadersDataSourceCredentials_ object, this object can be used as the authentication credentials object only for REST or Web Resource data sources.
 
-As RVHeadersDataSourceCredentials receives a list of headers, we need to create the "Cookie" header to be sent, according to the [HTTP documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie) the "Cookie" header can include multiple cookies separated by "; ", and that's what we're doing in this code:
+As _RVHeadersDataSourceCredentials_ is constructed with one or more headers, we need to create the "Cookie" header to be sent, according to the [HTTP documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie) the "Cookie" header can include multiple cookies separated by "; ", and that's what we're doing in this code:
 
 ```java
 public class SampleAuthenticationProvider extends RVBaseAuthenticationProvider {
