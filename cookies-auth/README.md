@@ -61,20 +61,18 @@ public class SampleUserContextProvider extends RVBaseUserContextProvider {
 ```
 
 ### Retrieving the cookie value from the user context
-In [SampleAuthenticationProvider](src/main/java/io/revealbi/sdk/samples/cookiesauth/SampleAuthenticationProvider.java) we're first converting the string we receive to a RVUserContext object, then we're getting the session id property.
+In [SampleAuthenticationProvider](src/main/java/io/revealbi/sdk/samples/cookiesauth/SampleAuthenticationProvider.java) we're extending _RVBaseAuthenticationProvider_, that takes care of passing a _RVUserContext_ to _resolveCredentials_.
+We're using that _RVUserContext_ object to get the "JSESSIONID" property we installed in _SampleUserContextProvider_.
 
 In this case our data source is a REST API data source, and we want to pass a couple of cookies as the credentials for it, including the session id cookie, so we need to return a RVHeadersDataSourceCredentials object, this object can be used as the authentication credentials object only for REST or Web Resource data sources.
 
 As RVHeadersDataSourceCredentials receives a list of headers, we need to create the "Cookie" header to be sent, according to the [HTTP documentation](https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Cookie) the "Cookie" header can include multiple cookies separated by "; ", and that's what we're doing in this code:
 
 ```java
-public class SampleAuthenticationProvider implements IRVAuthenticationProvider {
+public class SampleAuthenticationProvider extends RVBaseAuthenticationProvider {
 	@Override
-	public IRVDataSourceCredential resolveCredentials(String userId, RVDashboardDataSource dataSource) {
+	public IRVDataSourceCredential resolveCredentials(RVUserContext userContext, RVDashboardDataSource dataSource) {
 		if (dataSource instanceof RVRESTDataSource) {
-			//retrieve the user context returned by SampleUserContextProvider, which is automatically encoded in userId
-			RVUserContext userContext = RVUserContext.fromString(userId);
-			
 			//get the session id property included in the context
 			String sessionId = userContext.getProperty("JSESSIONID");
 
