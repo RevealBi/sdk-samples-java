@@ -1,11 +1,8 @@
 package io.revealbi.sdk.samples.cookiesauth;
 
 
-import java.util.HashMap;
-import java.util.Map;
-
 import com.infragistics.reveal.sdk.api.IRVDataSourceCredential;
-import com.infragistics.reveal.sdk.api.RVHeadersDataSourceCredential;
+import com.infragistics.reveal.sdk.api.RVHeadersDataSourceCredentials;
 import com.infragistics.reveal.sdk.api.model.RVDashboardDataSource;
 import com.infragistics.reveal.sdk.api.model.RVRESTDataSource;
 import com.infragistics.reveal.sdk.base.RVBaseAuthenticationProvider;
@@ -27,9 +24,7 @@ public class SampleAuthenticationProvider extends RVBaseAuthenticationProvider {
 
 			//use the Cookie header as the authentication credentials for this data source
 			//the data source used in this sample will echo back the list of headers/cookies received
-			Map<String, String> headers = new HashMap<String, String>();
-			headers.put("Cookie", cookies);
-			return new RVHeadersDataSourceCredential(headers);
+			return new RVHeadersDataSourceCredentials("Cookie", cookies);
 		} 
 		return null;
 	}
