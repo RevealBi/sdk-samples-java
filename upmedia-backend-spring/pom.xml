@@ -48,13 +48,8 @@
 	   	</dependency>
 		<dependency>
 			<groupId>io.revealbi.sdk.ext</groupId>
-			<version>1.0.0</version>
-			<artifactId>reveal-ext-api</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>io.revealbi.sdk.ext</groupId>
-			<version>1.0.0</version>
 			<artifactId>reveal-ext-rest</artifactId>
+			<version>1.0.1</version>
 		</dependency>
 	</dependencies>
 
