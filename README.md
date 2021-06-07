@@ -212,13 +212,13 @@ In order to use these extension services there are some more Maven dependencies 
 ```xml
 <dependency>
     <groupId>io.revealbi.sdk.ext</groupId>
-    <version>1.0.0</version>
     <artifactId>reveal-ext-api</artifactId>
+    <version>1.0.1</version>
 </dependency>
 <dependency>
     <groupId>io.revealbi.sdk.ext</groupId>
-    <version>1.0.0</version>
     <artifactId>reveal-ext-rest</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
