@@ -85,9 +85,7 @@ public class SampleAuthenticationProvider extends RVBaseAuthenticationProvider {
 
 			//use the Cookie header as the authentication credentials for this data source
 			//the data source used in this sample will echo back the list of headers/cookies received
-			Map<String, String> headers = new HashMap<String, String>();
-			headers.put("Cookie", cookies);
-			return new RVHeadersDataSourceCredential(headers);
+			return new RVHeadersDataSourceCredentials("Cookie", cookies);
 		} 
 		return null;
 	}
