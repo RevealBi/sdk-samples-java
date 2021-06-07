@@ -4,20 +4,17 @@ package io.revealbi.sdk.samples.cookiesauth;
 import java.util.HashMap;
 import java.util.Map;
 
-import com.infragistics.reveal.sdk.api.IRVAuthenticationProvider;
 import com.infragistics.reveal.sdk.api.IRVDataSourceCredential;
 import com.infragistics.reveal.sdk.api.RVHeadersDataSourceCredential;
 import com.infragistics.reveal.sdk.api.model.RVDashboardDataSource;
 import com.infragistics.reveal.sdk.api.model.RVRESTDataSource;
-import com.infragistics.reveal.sdk.rest.RVUserContext;
+import com.infragistics.reveal.sdk.base.RVBaseAuthenticationProvider;
+import com.infragistics.reveal.sdk.base.RVUserContext;
 
-public class SampleAuthenticationProvider implements IRVAuthenticationProvider {
+public class SampleAuthenticationProvider extends RVBaseAuthenticationProvider {
 	@Override
-	public IRVDataSourceCredential resolveCredentials(String userId, RVDashboardDataSource dataSource) {
+	public IRVDataSourceCredential resolveCredentials(RVUserContext userContext, RVDashboardDataSource dataSource) {
 		if (dataSource instanceof RVRESTDataSource) {
-			//retrieve the user context returned by SampleUserContextProvider, which is automatically encoded in userId
-			RVUserContext userContext = RVUserContext.fromString(userId);
-			
 			//get the session id property included in the context
 			String sessionId = userContext.getProperty("JSESSIONID");
 

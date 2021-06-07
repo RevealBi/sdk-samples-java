@@ -7,8 +7,8 @@ import java.util.Map;
 import javax.ws.rs.container.ContainerRequestContext;
 import javax.ws.rs.core.Cookie;
 
+import com.infragistics.reveal.sdk.base.RVUserContext;
 import com.infragistics.reveal.sdk.rest.RVBaseUserContextProvider;
-import com.infragistics.reveal.sdk.rest.RVUserContext;
 
 public class SampleUserContextProvider extends RVBaseUserContextProvider {
 
