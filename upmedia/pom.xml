@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>upmedia-sdk</groupId>
 	<artifactId>upmedia</artifactId>
-	<version>1.0.5-SNAPSHOT</version>
+	<version>1.0.6-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<repositories>
 		<repository>
@@ -14,7 +14,7 @@
 		<dependency>
 			<groupId>com.infragistics.reveal.sdk</groupId>
 			<artifactId>reveal-sdk</artifactId>
-			<version>1.0.4</version>
+			<version>1.0.5</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
