@@ -2,8 +2,14 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.5] - 2021-06-07
+- [JS Files](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.5/reveal-sdk-distribution-1.0.5-js.zip)
+- Added a new type of credentials for REST and Web Resource data sources: RVHeadersDataSourceCredentials that allow using headers and cookies for authentication to these data sources, more information on how to use it in the new sample: [cookies-auth](cookies-auth).
+- New RVUserContext class that can be used to store properties in addition to the userId.
+- New sample showing how to authenticate to REST or Web Resource data sources using Cookies or other headers: [cookies-auth](cookies-auth).
+
 ## [1.0.4] - 2021-05-26
-- [JS Files](https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip)
+- [JS Files](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip)
 - Added thumbnail (preview icon) JS component, more information in the new React sample: [upmedia-browser](https://github.com/RevealBi/sdk-samples-react/blob/feature/upmedia-browser/upmedia-browser/README.md) and in [sdk-samples-java](https://github.com/RevealBi/sdk-samples-java/blob/develop/README.md#returning-the-list-of-dashboards).
 - Added a new setting to include session cookies in requests to Reveal backend (which causes the "withCredentials" flag in jQuery.ajax to be turned on):
 ```javascript
