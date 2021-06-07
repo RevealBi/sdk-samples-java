@@ -7,8 +7,8 @@
 :---: | :---
 
 ## Latest Artifacts:
-- Latest Version: 1.0.4
-- Latest JS Files: [here](https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip)
+- Latest Version: 1.0.5
+- Latest JS Files: [here](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.5/reveal-sdk-distribution-1.0.5-js.zip)
 
 ## Basic Usage
 
@@ -34,14 +34,14 @@ and the following dependency, both to your `pom.xml` file:
 <dependency>
   <groupId>com.infragistics.reveal.sdk</groupId>
   <artifactId>reveal-sdk</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.5</version>
 </dependency>
 ```
 
 ### Download JS Files
-For a given version, for example "1.0.4", you can download the JS files using this URL: https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip
+For a given version, for example "1.0.5", you can download the JS files using this URL: https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.5/reveal-sdk-distribution-1.0.5-js.zip
 
-Please note there are two places in the URL where the version (1.0.4 in this case) is referenced, you need to change both to get JS files for another version.
+Please note there are two places in the URL where the version (1.0.5 in this case) is referenced, you need to change both to get JS files for another version.
 
 ## Configuration
 ### Export feature required configurations
@@ -129,7 +129,7 @@ If you have an existing Tomcat (or any other JEE container) application and you 
            <version>2.32</version>
      </dependency>
 ```
-- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.4):
+- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.5):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
@@ -151,7 +151,7 @@ If you have an existing Spring Boot application and you want to add Reveal, you 
    </dependency>
 ```
 - Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version
-you’re using, like 1.0.4):
+you’re using, like 1.0.5):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
