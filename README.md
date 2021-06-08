@@ -1,6 +1,6 @@
 # Sample applications using [RevealBI](https://revealbi.io) Java SDK
 [![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fmaven.revealbi.io%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](https://maven.revealbi.io/#basicsearch~public/com.infragistics.reveal.reveal-sdk)
-#### [Website](https://revealbi.io/) | [Docs](https://help.revealbi.io/en/developer/java-sdk/overview.html)
+#### [Website](https://revealbi.io/) | [Docs](https://help.revealbi.io/en/developer/java-sdk/overview.html) | [API Reference](https://help.revealbi.io/en/developer/java-sdk/api-reference.html)
 
   
 ℹ️ | Please note the Maven repo has been changed to https://maven.revealbi.io/repository/public
