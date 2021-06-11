@@ -35,6 +35,8 @@ public class RevealJerseyConfig extends ResourceConfig {
         for (Class<?> clazz : RevealEngineInitializer.getClassesToRegister()) {
         	register(clazz);
         }
+        register(ExceptionMapper.class);
+
         //register the CORS filter class
         register(CorsFilter.class);   
         
