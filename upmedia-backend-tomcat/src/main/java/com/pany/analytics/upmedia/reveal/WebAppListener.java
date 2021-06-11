@@ -39,6 +39,8 @@ public class WebAppListener implements ServletContextListener {
 			build()
 		);
 
+		RevealEngineInitializer.registerResource(ExceptionMapper.class);
+
 		//register the CORS filter class
 		RevealEngineInitializer.registerResource(CorsFilter.class);
 		
