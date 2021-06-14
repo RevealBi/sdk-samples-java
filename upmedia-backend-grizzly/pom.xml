@@ -24,6 +24,7 @@
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>exec-maven-plugin</artifactId>
+				<version>3.0.0</version>
 				<configuration>
 					<mainClass>com.pany.analytics.upmedia.UpmediaServer</mainClass>
 				</configuration>				
@@ -62,4 +63,7 @@
 			<artifactId>reveal-ext-rest</artifactId>
 		</dependency>
 	</dependencies>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+	</properties>
 </project>
