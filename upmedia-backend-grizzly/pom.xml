@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.pany.analytics</groupId>
 	<artifactId>upmedia-backend-grizzly</artifactId>
-	<version>1.0.6-SNAPSHOT</version>
+	<version>1.0.7-SNAPSHOT</version>
 	<repositories>
 		<repository>
 			<id>reveal.public</id>
