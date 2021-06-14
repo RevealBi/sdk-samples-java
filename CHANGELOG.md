@@ -2,6 +2,11 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.6] - 2021-06-14
+- [JS Files](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.6/reveal-sdk-distribution-1.0.6-js.zip)
+- Removed wrong dependency to `javax.servlet.ServletContext` class and `javax.servlet:javax.servlet-api` assembly that was causing NoClassDefFoundError exception (javax.servlet.ServletContext) when running in Grizzly.
+- Created [new sample](upmedia-backend-grizzly) showing how to use Reveal with [Grizzly](https://javaee.github.io/grizzly/) server.
+
 ## [1.0.5] - 2021-06-07
 - [JS Files](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.5/reveal-sdk-distribution-1.0.5-js.zip)
 - Added a new type of credentials for REST and Web Resource data sources: RVHeadersDataSourceCredentials that allow using headers and cookies for authentication to these data sources, more information on how to use it in the new sample: [cookies-auth](cookies-auth).
