@@ -19,6 +19,7 @@ public class UpmediaDashboardProvider extends BaseDashboardRepository {
 	protected String[] getUserDashboardIds(String userId) throws IOException {
 		return new String[] {
 			"Campaigns",
+			"Healthcare",
 			"Manufacturing",
 			"Marketing",
 			"Sales"
