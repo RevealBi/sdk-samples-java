@@ -1,14 +1,14 @@
 # Sample applications using [RevealBI](https://revealbi.io) Java SDK
-[![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fmaven.revealbi.io%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](https://maven.revealbi.io/#basicsearch/com.infragistics.reveal.reveal-sdk)
-#### [Website](https://revealbi.io/) | [Docs](https://help.revealbi.io/en/developer/java-sdk/overview.html)
+[![maven_version](https://img.shields.io/maven-metadata/v?metadataUrl=https%3A%2F%2Fmaven.revealbi.io%2Frepository%2Fpublic%2Fcom%2Finfragistics%2Freveal%2Fsdk%2Freveal-sdk%2Fmaven-metadata.xml)](https://maven.revealbi.io/#basicsearch~public/com.infragistics.reveal.reveal-sdk)
+#### [Website](https://revealbi.io/) | [Docs](https://help.revealbi.io/en/developer/java-sdk/overview.html) | [API Reference](https://help.revealbi.io/en/developer/java-sdk/api-reference.html)
 
   
 ℹ️ | Please note the Maven repo has been changed to https://maven.revealbi.io/repository/public
 :---: | :---
 
 ## Latest Artifacts:
-- Latest Version: 1.0.4
-- Latest JS Files: [here](https://revealpackages.eastus.cloudapp.azure.com/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip)
+- Latest Version: 1.0.6
+- Latest JS Files: [here](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.6/reveal-sdk-distribution-1.0.6-js.zip)
 
 ## Basic Usage
 
@@ -34,14 +34,14 @@ and the following dependency, both to your `pom.xml` file:
 <dependency>
   <groupId>com.infragistics.reveal.sdk</groupId>
   <artifactId>reveal-sdk</artifactId>
-  <version>1.0.4</version>
+  <version>1.0.6</version>
 </dependency>
 ```
 
 ### Download JS Files
-For a given version, for example "1.0.4", you can download the JS files using this URL: https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.4/reveal-sdk-distribution-1.0.4-js.zip
+For a given version, for example "1.0.6", you can download the JS files using this URL: https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.6/reveal-sdk-distribution-1.0.6-js.zip
 
-Please note there are two places in the URL where the version (1.0.4 in this case) is referenced, you need to change both to get JS files for another version.
+Please note there are two places in the URL where the version (1.0.6 in this case) is referenced, you need to change both to get JS files for another version.
 
 ## Configuration
 ### Export feature required configurations
@@ -129,7 +129,7 @@ If you have an existing Tomcat (or any other JEE container) application and you 
            <version>2.32</version>
      </dependency>
 ```
-- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.4):
+- Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version you’re using, like 1.0.6):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
@@ -151,7 +151,7 @@ If you have an existing Spring Boot application and you want to add Reveal, you 
    </dependency>
 ```
 - Add a dependency to “reveal-sdk” (“version_here” must be replaced with the version
-you’re using, like 1.0.4):
+you’re using, like 1.0.6):
 ```xml
    <dependency>
          <groupId>com.infragistics.reveal.sdk</groupId>
@@ -212,13 +212,13 @@ In order to use these extension services there are some more Maven dependencies 
 ```xml
 <dependency>
     <groupId>io.revealbi.sdk.ext</groupId>
-    <version>1.0.0</version>
     <artifactId>reveal-ext-api</artifactId>
+    <version>1.0.1</version>
 </dependency>
 <dependency>
     <groupId>io.revealbi.sdk.ext</groupId>
-    <version>1.0.0</version>
     <artifactId>reveal-ext-rest</artifactId>
+    <version>1.0.1</version>
 </dependency>
 ```
 
