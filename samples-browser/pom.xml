@@ -114,8 +114,8 @@
 		</plugins>
 	</build>
 	<properties>
-		<reveal.ext.version>1.0.0-SNAPSHOT</reveal.ext.version>
-		<reveal.sdk.version>1.0.4-SNAPSHOT</reveal.sdk.version>
+		<reveal.ext.version>1.0.2-SNAPSHOT</reveal.ext.version>
+		<reveal.sdk.version>1.0.7-SNAPSHOT</reveal.sdk.version>
 	</properties>
 	<profiles>
 		<profile>

@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
-                                
+                                        
+    
+    
     
     
     
@@ -7,14 +9,18 @@
     
     
     <wb-module deploy-name="samples">
-                                                        
+                                                                        
+        
+        
         
         
         
         
         
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
-                                                                
+                                                                                
+        
+        
         
         
         
@@ -22,25 +28,33 @@
         
         
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
-                        
+                                        
+        
+        
         
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-                        
+                                        
+        
+        
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/resources"/>
-                        
+                                        
+        
+        
         
         <wb-resource deploy-path="/WEB-INF/classes" source-path="/src/main/java"/>
-        <dependent-module archiveName="reveal-ext-api-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reveal-ext-api/reveal-ext-api">
+        <dependent-module archiveName="reveal-ext-api-1.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reveal-ext-api/reveal-ext-api">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="reveal-ext-fs-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reveal-ext-fs/reveal-ext-fs">
+        <dependent-module archiveName="reveal-ext-fs-1.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reveal-ext-fs/reveal-ext-fs">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-        <dependent-module archiveName="reveal-ext-rest-1.0.0-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reveal-ext-rest/reveal-ext-rest">
+        <dependent-module archiveName="reveal-ext-rest-1.0.2-SNAPSHOT.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/reveal-ext-rest/reveal-ext-rest">
             <dependency-type>uses</dependency-type>
         </dependent-module>
-                                                                
+                                                                                
+        
+        
         
         
         
@@ -48,8 +62,12 @@
         
         
         <property name="java-output-path" value="/upmedia-sdk/build/classes"/>
+                        
+        
         <property name="context-root" value="samples"/>
-                                                            
+                                                                            
+    
+    
     
     
     
@@ -57,7 +75,9 @@
     
     
     </wb-module>
-                            
+                                    
+
+
 
 
 
