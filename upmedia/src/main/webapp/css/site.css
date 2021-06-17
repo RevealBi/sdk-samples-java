@@ -36,7 +36,6 @@ html, body, ul {
 body {
     display: flex;
     flex-direction: column;
-    grid-template-rows: 80px auto;
 }
 
 nav {
@@ -118,6 +117,7 @@ header {
 
 #revealView {
     height: 100%;
+    position: relative;
 }
 
 
@@ -126,7 +126,7 @@ nav img {
 }
 
 section {
-    height: 100%;
+    flex-grow: 1;
     width: 100%;
 }
 
@@ -135,7 +135,6 @@ section {
     display: flex;
     background-color: rgb(51, 51, 51);
     overflow: hidden;
-    position: fixed;
     bottom: 0;
     width: 100%;
     justify-content: space-evenly;
