@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.revealbi.sdk.samples</groupId>
 	<artifactId>studio-backend-tomcat</artifactId>
-	<version>1.0.7-SNAPSHOT</version>
+	<version>1.0.8-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<repositories>
 		<repository>
@@ -16,17 +16,17 @@
 		<dependency>
 			<groupId>com.infragistics.reveal.sdk</groupId>
 			<artifactId>reveal-sdk</artifactId>
-			<version>1.0.7-SNAPSHOT</version>
+			<version>1.0.7</version>
 		</dependency>
 		<dependency>
 			<groupId>io.revealbi.sdk.ext</groupId>
 			<artifactId>reveal-ext-rest</artifactId>
-			<version>1.0.2-SNAPSHOT</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>io.revealbi.sdk.ext</groupId>
 			<artifactId>reveal-ext-fs</artifactId>
-			<version>1.0.2-SNAPSHOT</version>
+			<version>1.0.2</version>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
