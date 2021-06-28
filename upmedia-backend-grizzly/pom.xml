@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.pany.analytics</groupId>
 	<artifactId>upmedia-backend-grizzly</artifactId>
-	<version>1.0.7-SNAPSHOT</version>
+	<version>1.0.8-SNAPSHOT</version>
 	<repositories>
 		<repository>
 			<id>reveal.public</id>
@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>com.infragistics.reveal.sdk</groupId>
 			<artifactId>reveal-sdk</artifactId>
-			<version>1.0.6</version>
+			<version>1.0.7</version>
 		</dependency>
 		<dependency>
 			<groupId>io.revealbi.sdk.ext</groupId>
