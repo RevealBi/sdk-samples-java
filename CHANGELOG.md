@@ -2,6 +2,14 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.7] - 2021-06-28
+- [JS Files](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.7/reveal-sdk-distribution-1.0.7-js.zip)
+- Added support for OpenStreetMap as the tile provider for Scatter Map visualization
+- Fixed list of values displayed for a filter corresponding to a calculated field, when data is loaded from a database with server-side processing enabled.
+- TextBox visualization content not visible after the component is remounted (React and Angular applications)
+- Fixed the definition of dashboards filters from Google Analytics and the linking of dashboard filters to visualizations getting data from Google Analytics.
+- Created [new sample](studio-backend-tomcat) showing how to enable the creation of data sources by the end user, including support for OAuth provider like Google Analytics and databases like MS SQL Server, PostreSQL and others. This sample should be used along the [studio react sample](https://github.com/RevealBi/sdk-samples-react/tree/main/studio).
+
 ## [1.0.6] - 2021-06-14
 - [JS Files](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.6/reveal-sdk-distribution-1.0.6-js.zip)
 - Removed wrong dependency to `javax.servlet.ServletContext` class and `javax.servlet:javax.servlet-api` assembly that was causing NoClassDefFoundError exception (javax.servlet.ServletContext) when running in Grizzly.
