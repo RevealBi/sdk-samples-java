@@ -24,6 +24,9 @@ FileSystemExtFactory.registerAllServices("${user.home}/reveal-studio", true);
 ```
 The `true` flag we're passing as the second parameter indicates we want these services to store data per user, on some other scenarios like read-only anonymous applications we might want to pass false so all users share the same data.
 
+ℹ️ | The way data is stored by these classes is NOT production ready, first because data is stored in the file system that is not the best option but mainly because sensitive data (like tokens or passwords) is not encrypted. We'll be releasing soon improved implementations of these services storing data in databases and encrypting sensitive data.
+:---: | :---
+
 The previous call to `registerAllServices` is a shortcut to register providers in the following factories: `DashboardRepositoryFactory`, `CredentialRepositoryFactory`, `DataSourcesRepositoryFactory` and `OAuthTokenRepositoryFactory`.
 
 So, you can replace that line by registering your own implementations for some or all of these services, for example you might want to keep dashboards and data sources stored in the file system but move credentials and OAuth tokens to a database, for security reasons.
