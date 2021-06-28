@@ -63,6 +63,7 @@ But unfortunately, that's not the case for other providers, specifically those r
 Using Google Analytics as an example, in order to authenticate end users with Google Analytics you need to configure an OAuth application in the Google Developers Console, as end users will enter credentials in your application (in a URL you control) you need to show Google that such application is secure and can be trusted. 
 The requirements from Google vary if you're deploying a public application or just an application that is internal to your company, for more information check [this page](https://support.google.com/cloud/answer/10311615?authuser=2#user-type&zippy=).
 
+For more information on how to create an OAuth application for Google Analytics you can read [this section](#creating-an-oauth-application-for-google-analytics) below.
 Once you have your application configured in the OAuth provider (Google in this case) you'll have this information: `clientId` and `clientSecret` and you'll have a way to configure the redirect URI(s) for the application.
 
 Continuing with Google Analytics as the example, the redirect URI to be configured is `reveal-api/oauth/GOOGLE_ANALYTICS/callback`, for example for a React application and for the development environment, it would be: `http://localhost:3000/studio-backend/reveal-api/oauth/GOOGLE_ANALYTICS/callback`, please note that only `localhost` is allowed to be accessed using `http` as the protocol, for any other name you need to use `https`, that's an important consideration when deploying to an internal test server or a production environment.
@@ -98,3 +99,52 @@ Finally, in order to have the endpoints for managing dashboards, data sources an
 RestExtFactory.registerAllResources();
 ```
 This will register all resources required to read/write dashboards, data sources, credentials and OAuth tokens and these resources will automatically use the providers registered before to read/write them.
+
+## Creating an OAuth application for Google Analytics
+In this section we describe how to use the Google Developers Console to create an OAuth application in order to get data from Google Analytics in Reveal embedded in your application.
+
+1. Go to [console.developers.google.com](https://console.developers.google.com).
+2. Create a new project or use an existing one, for this document we created a new project called “RevealStudioTest”.
+3. Enable Google Analytics APIs: in the “Dashboard” screen click “Enable APIs and Services”, search for “analytics” and enable both “Google Analytics API” and “Google Analytics Reporting API”:
+
+<img width="468" alt="image" src="https://user-images.githubusercontent.com/14890904/123649394-1773d980-d800-11eb-93d2-b458365e6623.png">
+
+5. Configure the “OAuth consent screen”:
+<img width="468" alt="image" src="https://user-images.githubusercontent.com/14890904/123648404-4d648e00-d7ff-11eb-8bfd-d7098ca0f9f8.png">
+
+You need to configure it based on the type of your application, for internal applications to your organizations you can select internal, for this document we’ll be using an “external” application, then click create and configure the requested information in the next screen:
+
+<img width="468" alt="image" src="https://user-images.githubusercontent.com/14890904/123648456-57868c80-d7ff-11eb-9e03-5a62e164061c.png">
+
+Please note that not all of the information in this screen is mandatory to have an application for testing, filling the fields in the screenshot above (App name, support email and App logo) should be enough for now, then click “Save and Continue” to configure the scopes.
+
+In the scopes section you need to configure the following:
+
+<img width="468" alt="image" src="https://user-images.githubusercontent.com/14890904/123648525-653c1200-d7ff-11eb-858a-a8d8d4cee77f.png">
+
+If you don’t find the option for the “analytics.readonly” scope, then you need to enable the Google Analytics APIs, as described in step 3. Then click “Save and Continue” to configure test users.
+
+Add at least one user to the list of test users, the user you’re planning to use when creating the data source in Reveal, click “Save and Continue” to complete the configuration of the OAuth Consent Screen.
+
+5. Create OAuth credentials
+In the “Credentials” screen, click “Create Credentials” and select “OAuth client ID”, then select “Web application” as the “Application type”:
+
+<img width="468" alt="image" src="https://user-images.githubusercontent.com/14890904/123648629-7a18a580-d7ff-11eb-94bf-701f4cc286dc.png">
+
+You can change the name for the web client or just leave “Web client 1”, then you need to setup the redirect URI, add the following one:
+http://localhost:3000/studio-backend/reveal-api/oauth/GOOGLE_ANALYTICS/callback
+
+Then click “Create” to create the web client, you will see a screen like this one with the “Client ID” and “Client Secret” values for your application, you need to copy them as you’ll need to configure them in Reveal, along the redirect URI:
+
+<img width="326" alt="image" src="https://user-images.githubusercontent.com/14890904/123648669-83a20d80-d7ff-11eb-9172-2d05906aa45c.png">
+
+6. Configure the OAuth provider in Reveal, in the class initializing Reveal (usually WebAppListener), add a line like this (replacing clientId and clientSecret with the corresponding values):
+
+```java
+OAuthManagerFactory.getInstance().registerProvider(
+	OAuthProviderType.GOOGLE_ANALYTICS, 
+	"client_id_here", //clientId 
+	"client_secret_here", //clientSecret
+	"http://localhost:3000/studio-backend/reveal-api/oauth/GOOGLE_ANALYTICS/callback"
+);
+```
