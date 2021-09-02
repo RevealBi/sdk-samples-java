@@ -2,6 +2,9 @@
 
 This is actually acting as a Changelog for RevealBI Java SDK for now.
 
+## [1.0.8] - 2021-09-02
+- Fix HTTP connection leaks, in particular one found when response bodies were not processed after reading the returned headers from a given resource URL.
+
 ## [1.0.7] - 2021-06-28
 - [JS Files](https://maven.revealbi.io/repository/public/com/infragistics/reveal/sdk/reveal-sdk-distribution/1.0.7/reveal-sdk-distribution-1.0.7-js.zip)
 - Added support for OpenStreetMap as the tile provider for Scatter Map visualization
